@@ -1,15 +1,20 @@
-import { useEffect, useRef } from "react"; 
-import { useNavigate } from "react"; 
+import { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/homepage.css";
 
 export default function HomePage() {
-  const titleRef = useRef(null); 
-  const navigate = useNavigate(); 
+  const titleRef = useRef(null);
+  const navigate = useNavigate();
 
-  function AboutMe() { 
-    navigate('/AboutMe'); 
+  function AboutMe() {
+    navigate("/AboutMe");
   }
-  // this is for the text for like the title 
+
+  function ContactMe() {
+    navigate("/ContactMe");
+  }
+
+  // this is for the text for like the title
   useEffect(() => {
     const title = "Ideas Made Real";
     const titleElement = titleRef.current;
@@ -36,16 +41,29 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="title">
-      <h1 ref={titleRef}></h1>
-      <div className="paragraph-box">
-        <p1>
-          Ideas Made Real isn't just a motto for me—it's how I build. I'm always
-          thinking of fun and ambitious projects, whether to solve a particular
-          problem or escape my own. Creating is where I find an escape. That's me — Rayat
-          Chowdhury
-        </p1>
+    <>
+      <div className="title">
+        <h1 ref={titleRef}></h1>
+        <div className="paragraph-box">
+          <p>
+            Ideas Made Real isn't just a motto for me—it's how I build. I'm
+            always thinking of fun and ambitious projects, whether to solve a
+            particular problem or escape my own. Creating is where I find an
+            escape. That's me — Rayat Chowdhury, Welcome to my Portfolio!
+          </p>
+        </div>
+
+        {/*For the buttons here below */}
+        <div className="button-container">
+          <button className="Aboutmebtn" onClick={AboutMe}>
+            About me
+          </button>
+
+          <button className="Contactmebtn" onClick={ContactMe}>
+            Contact me
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
