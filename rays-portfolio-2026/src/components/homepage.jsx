@@ -3,7 +3,7 @@ import "../styles/homepage.css";
 export default function HomePage() {
   return (
     <div className="title">
-      <h1>Ideas Made Real</h1>
+      <h1 className='title-text'>Ideas Made Real</h1>
       <div className='paragraph-box'>
         <p1>
           Ideas Made Real is more than a motto to me—it’s how I approach
