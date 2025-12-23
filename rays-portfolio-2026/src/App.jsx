@@ -1,13 +1,12 @@
-// import the components here as such 
-import HomePage from './components/homepage.jsx'; 
+// import the components here as such
+import HomePage from "./components/homepage.jsx";
 
 function App() {
-
   return (
     <>
-      <HomePage/>
+      <HomePage />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
