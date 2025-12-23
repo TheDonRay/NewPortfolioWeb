@@ -1,9 +1,15 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react"; 
+import { useNavigate } from "react"; 
 import "../styles/homepage.css";
 
 export default function HomePage() {
-  const titleRef = useRef(null);
+  const titleRef = useRef(null); 
+  const navigate = useNavigate(); 
 
+  function AboutMe() { 
+    navigate('/AboutMe'); 
+  }
+  // this is for the text for like the title 
   useEffect(() => {
     const title = "Ideas Made Real";
     const titleElement = titleRef.current;
