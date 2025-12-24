@@ -16,6 +16,10 @@ export default function HomePage() {
 
   function MyGithub() { 
     window.open('https://github.com/TheDonRay', '_blank', 'noopener,noreferrer');
+  } 
+
+  function RecentProj() { 
+    navigate("/CurrentProject"); 
   }
 
   // this is for the text for like the title
@@ -72,7 +76,11 @@ export default function HomePage() {
 
           <button className="mygithubbtn" onClick={MyGithub}>
             My GitHub
-          </button> 
+          </button>  
+
+          <button className="recentProj" onClick={RecentProj}>
+            Recent Project
+          </button>  
 
         </div>
       </div>
