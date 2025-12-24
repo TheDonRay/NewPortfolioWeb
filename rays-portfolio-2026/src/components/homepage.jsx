@@ -21,10 +21,12 @@ export default function HomePage() {
       "noopener,noreferrer",
     );
   }
-
-  function RecentProj() {
-    navigate("/CurrentProject");
+ 
+  function OpenPDF(){ 
+    const pdfURL = "../public/resume.pdf"; 
+    window.open(pdfURL, '_blank'); 
   }
+  
 
   // this is for the text for like the title
   useEffect(() => {
@@ -82,8 +84,8 @@ export default function HomePage() {
             My GitHub
           </button>
 
-          <button className="recentProj" onClick={RecentProj}>
-            Current Project
+          <button className="resume" onClick={OpenPDF}>
+            My Resume
           </button>
         </div>
       </div>

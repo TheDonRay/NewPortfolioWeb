@@ -1,4 +1,5 @@
 import "../styles/aboutme.css";
+import { useNavigate } from 'react-router-dom'; 
 
 export default function AboutMe() {
   const skills = [
@@ -112,13 +113,11 @@ export default function AboutMe() {
       icon: "https://cdn-icons-png.flaticon.com/512/5968/5968313.png",
     },
   ];
-
-  const scrollToContact = () => {
-    const contactSection = document.getElementById("contact");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+ 
+  const navigate = useNavigate(); 
+  function Contactme() { 
+    navigate("/ContactMe");
+  }
 
   return (
     <>
@@ -161,31 +160,37 @@ export default function AboutMe() {
         <div className="column hobbies">
           <h1>Hobbies/Interests</h1>
           <p>
-            When I’m not coding or studying, you’ll probably find me scrolling through
-            Facebook Marketplace admiring my favorite cars—especially the
-            Infiniti Q60 and BMWs like the 330i, 335i, M5, and 540i. I’m also
-            big into gaming, spending time in Fortnite’s Ballistic mode, which I
-            enjoy for its Valorant-like strategy, coordination, and fast
+            When I’m not coding or studying, you’ll probably find me scrolling
+            through Facebook Marketplace admiring my favorite cars, especially
+            the Infiniti Q60 and BMWs like the 330i, 335i, M5, and 540i. I’m
+            also big into gaming, spending time in Fortnite’s Ballistic mode,
+            which I enjoy for its Valorant-like strategy, coordination, and fast
             decision-making. Beyond gaming, I genuinely enjoy LeetCoding,
             treating it like a mental workout and a way to sharpen my
             problem-solving skills. To unwind, I love going on long night
-            drives—just me, the road, and some music—to clear my mind and reset
-            before the next build or challenge
+            drives—just me, the road, and some music to clear my mind and reset
+            before the next build or challenge.
           </p>
         </div>
 
         <div className="column goals">
           <h1>My Goals</h1>
           <p>
-            Build impactful projects, master full-stack development, and
-            contribute to open-source communities. I want to create tools that
-            help developers and solve real-world problems.
+            My goals are simple: I want to build, and I want to build with
+            purpose. I’ve realized that I’m really passionate about working in
+            the medical space, using code to make healthcare more practical,
+            accessible, and easier to use for everyday people. Creating
+            technology that genuinely helps others both mentally and physically
+            is something I truly care about. Alongside this, I aspire to become
+            a successful software engineer and also a businessman, building
+            meaningful ventures both in New York and in my home country,
+            Bangladesh.
           </p>
         </div>
       </div>
 
       <div className="contact-button-container">
-        <button onClick={scrollToContact} className="contact-button">
+        <button onClick={Contactme} className="contact-button">
           Contact Me
         </button>
       </div>
