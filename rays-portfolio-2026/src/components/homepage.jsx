@@ -12,14 +12,18 @@ export default function HomePage() {
 
   function ContactMe() {
     navigate("/ContactMe");
-  } 
+  }
 
-  function MyGithub() { 
-    window.open('https://github.com/TheDonRay', '_blank', 'noopener,noreferrer');
-  } 
+  function MyGithub() {
+    window.open(
+      "https://github.com/TheDonRay",
+      "_blank",
+      "noopener,noreferrer",
+    );
+  }
 
-  function RecentProj() { 
-    navigate("/CurrentProject"); 
+  function RecentProj() {
+    navigate("/CurrentProject");
   }
 
   // this is for the text for like the title
@@ -56,8 +60,8 @@ export default function HomePage() {
         <h1 ref={titleRef}></h1>
         <div className="paragraph-box">
           <p>
-            I live by a simple motto: Ideas Made Real. It’s more than words, it’s
-            how I build. I’m always exploring ambitious, creative projects,
+            I live by a simple motto: Ideas Made Real. It’s more than words,
+            it’s how I build. I’m always exploring ambitious, creative projects,
             whether to solve real problems or escape my own thoughts. Building
             is where creativity meets purpose. That’s me — Rayat Chowdhury.
             Welcome to my portfolio.
@@ -72,16 +76,15 @@ export default function HomePage() {
 
           <button className="Contactmebtn" onClick={ContactMe}>
             Contact me
-          </button> 
+          </button>
 
           <button className="mygithubbtn" onClick={MyGithub}>
             My GitHub
-          </button>  
+          </button>
 
           <button className="recentProj" onClick={RecentProj}>
-            Recent Project
-          </button>  
-
+            Current Project
+          </button>
         </div>
       </div>
     </>

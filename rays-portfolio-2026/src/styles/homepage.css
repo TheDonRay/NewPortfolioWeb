@@ -108,8 +108,8 @@ body {
 
 /* Button styles */
 .Aboutmebtn,
-.Contactmebtn, 
-.mygithubbtn, 
+.Contactmebtn,
+.mygithubbtn,
 .recentProj {
   padding: 1rem 2.5rem;
   font-family: "Plus Jakarta Sans", sans-serif;
@@ -129,8 +129,8 @@ body {
 
 /* Hover effect */
 .Aboutmebtn:hover,
-.Contactmebtn:hover, 
-.mygithubbtn:hover, 
+.Contactmebtn:hover,
+.mygithubbtn:hover,
 .recentProj:hover {
   transform: translateY(-2px);
   border-color: #666666;
@@ -140,15 +140,15 @@ body {
 /* Active/click effect */
 .Aboutmebtn:active,
 .Contactmebtn:active,
-.mygithubbtn:active, 
+.mygithubbtn:active,
 .recentProj:active {
   transform: translateY(0);
 }
 
 /* Subtle shine effect on hover */
 .Aboutmebtn::before,
-.Contactmebtn::before, 
-.mygithubbtn::before, 
+.Contactmebtn::before,
+.mygithubbtn::before,
 .recentProj::before {
   content: "";
   position: absolute;
@@ -166,8 +166,8 @@ body {
 }
 
 .Aboutmebtn:hover::before,
-.Contactmebtn:hover::before, 
-.mygithubbtn:hover::before, 
+.Contactmebtn:hover::before,
+.mygithubbtn:hover::before,
 .recentProj:hover::before {
   left: 100%;
 }
