@@ -1,3 +1,11 @@
+import "../styles/contactme.css"
+
 export default function ContactMe() {
-  return <h1>Contact Information for me</h1>;
+    return(
+      <div className="container"> 
+        <div className="Contactmebox"> 
+
+        </div>
+      </div>
+    )
 }

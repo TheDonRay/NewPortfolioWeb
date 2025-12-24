@@ -114,11 +114,19 @@ export default function AboutMe() {
     },
   ];
  
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();  
+
   function Contactme() { 
     navigate("/ContactMe");
   }
 
+  function mygithub() { 
+    window.open(
+      "https://github.com/TheDonRay",
+      "_blank",
+      "noopener,noreferrer",
+    );
+  }
   return (
     <>
       <div className="container">
@@ -192,6 +200,10 @@ export default function AboutMe() {
       <div className="contact-button-container">
         <button onClick={Contactme} className="contact-button">
           Contact Me
+        </button> 
+
+        <button onClick={mygithub} className="github-btn"> 
+          My Github
         </button>
       </div>
     </>
