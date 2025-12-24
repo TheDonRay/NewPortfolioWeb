@@ -1,5 +1,5 @@
 import "../styles/aboutme.css";
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from "react-router-dom";
 
 export default function AboutMe() {
   const skills = [
@@ -113,14 +113,14 @@ export default function AboutMe() {
       icon: "https://cdn-icons-png.flaticon.com/512/5968/5968313.png",
     },
   ];
- 
-  const navigate = useNavigate();  
 
-  function Contactme() { 
+  const navigate = useNavigate();
+
+  function Contactme() {
     navigate("/ContactMe");
   }
 
-  function mygithub() { 
+  function mygithub() {
     window.open(
       "https://github.com/TheDonRay",
       "_blank",
@@ -200,9 +200,9 @@ export default function AboutMe() {
       <div className="contact-button-container">
         <button onClick={Contactme} className="contact-button">
           Contact Me
-        </button> 
+        </button>
 
-        <button onClick={mygithub} className="github-btn"> 
+        <button onClick={mygithub} className="github-btn">
           My Github
         </button>
       </div>

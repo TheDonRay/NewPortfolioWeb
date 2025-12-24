@@ -21,12 +21,11 @@ export default function HomePage() {
       "noopener,noreferrer",
     );
   }
- 
-  function OpenPDF(){ 
-    const pdfURL = "../public/resume.pdf"; 
-    window.open(pdfURL, '_blank'); 
+
+  function OpenPDF() {
+    const pdfURL = "../public/resume.pdf";
+    window.open(pdfURL, "_blank");
   }
-  
 
   // this is for the text for like the title
   useEffect(() => {
