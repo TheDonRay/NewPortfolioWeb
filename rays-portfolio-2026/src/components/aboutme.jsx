@@ -127,15 +127,17 @@ export default function AboutMe() {
           <h1>Who is Rayat?</h1>
           <p>
             Rayat (Ray) is a junior at Hunter College studying Computer Science
-            with a minor in Mathematics. He’s an aspiring Backend Developer with
-            a love for JavaScript and Express.js. He likes to think of himself
-            as a “bootleg Tony Stark,” solving his own problems and others’
-            through a common solution: code. He’s passionate about backend
-            development, quality engineering, and building reliable, relatable
-            projects that help people in their day-to-day lives. Through
-            hands-on projects, he’s developed strong problem-solving skills and
-            a commitment to high-quality software. Rayat is always learning,
-            experimenting, and pushing his technical abilities forward even if it comes with mistakes and bugs hes always commited to work.
+            with a minor in Mathematics. He is an aspiring backend developer
+            with a strong focus on JavaScript and Express.js. Often describing
+            himself as a “bootleg Tony Stark,” Ray enjoys solving real-world
+            problems—his own and others’—through code. He is passionate about
+            backend systems, quality engineering, and building reliable,
+            user-focused projects that make a meaningful impact. Through
+            hands-on development, Rayat has developed strong problem-solving
+            skills and a deep commitment to writing clean, dependable software.
+            He is constantly learning, experimenting, and pushing his technical
+            abilities forward, embracing mistakes and bugs as part of the growth
+            process.
           </p>
 
           {/* Scrolling Skills Strip */}
@@ -159,10 +161,16 @@ export default function AboutMe() {
         <div className="column hobbies">
           <h1>Hobbies/Interests</h1>
           <p>
-            When I'm not coding, you'll find me gaming, exploring new tech, or
-            working on side projects that excite me. I love diving into new
-            frameworks and staying up to date with the latest in web
-            development.
+            When I’m not coding or studying, you’ll probably find me scrolling through
+            Facebook Marketplace admiring my favorite cars—especially the
+            Infiniti Q60 and BMWs like the 330i, 335i, M5, and 540i. I’m also
+            big into gaming, spending time in Fortnite’s Ballistic mode, which I
+            enjoy for its Valorant-like strategy, coordination, and fast
+            decision-making. Beyond gaming, I genuinely enjoy LeetCoding,
+            treating it like a mental workout and a way to sharpen my
+            problem-solving skills. To unwind, I love going on long night
+            drives—just me, the road, and some music—to clear my mind and reset
+            before the next build or challenge
           </p>
         </div>
 
