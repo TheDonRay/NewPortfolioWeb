@@ -1,3 +1,7 @@
+body { 
+    overflow-x: hidden; 
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -7,21 +11,29 @@
   padding: 3rem 1rem;
 }
 
+/* added this*/ 
+.aboutRayat {
+  max-width: 800px;   /* match your container width if needed */
+  width: 100%;
+  overflow: hidden;   /* IMPORTANT: clips the moving track */
+} 
+/* Shared styles for all columns */ 
+.aboutRayat,
 .column {
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   border: 1px solid #404040;
   padding: 2.5rem;
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   position: relative;
-  overflow: hidden;
+  overflow: hidden; 
+  width: 100%; 
+  min-width: 0;; 
 }
 
 /* Subtle animated border effect */
+.aboutRayat::before,
 .column::before {
   content: "";
   position: absolute;
@@ -37,12 +49,14 @@
   opacity: 0.3;
 }
 
+.aboutRayat:hover,
 .column:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
   border-color: #666666;
 }
 
+.aboutRayat h1,
 .column h1 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
@@ -53,6 +67,7 @@
   z-index: 1;
 }
 
+.aboutRayat p,
 .column p {
   color: #e5e5e5;
   line-height: 1.8;
@@ -65,35 +80,44 @@
 
 /* Scrolling Skills Strip */
 .skills-marquee {
-  margin-top: 2rem;
+  margin-top: 1.25rem;
   overflow: hidden;
   background: #0a0a0a;
   border: 1px solid #404040;
-  padding: 1.5rem 0;
-  border-radius: 12px;
+  padding: 10px 0;
+  border-radius: 14px;
   position: relative;
+  z-index: 1; 
+  width: 100%;
+  max-width: 100%; 
+  min-width: 0; 
+
+  display: flex;
+  align-items: center;
 }
 
 .skills-track {
   display: flex;
-  gap: 2rem;
-  animation: scroll 20s linear infinite;
-  width: fit-content;
+  align-items: center;
+  gap: 12px;              /* was 2rem */
+  animation: scroll 22s linear infinite;  /* was 40s */
+  width: max-content;     /* was fit-content */
+  flex-wrap: nowrap;      /* add this */
+  will-change: transform;
+  padding: 0 14px;        /* add this */
 }
 
 .skill-item {
-  display: flex;
+  display: inline-flex;     /* was flex */
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-  border: 1px solid #404040;
-  padding: 0.75rem 1.25rem;
-  border-radius: 12px;
+  gap: 10px;                /* was 0.5rem */
+  background: rgba(255, 255, 255, 0.06); /* optional: cleaner */
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  padding: 10px 14px;       /* was 0.75rem 1.25rem */
+  border-radius: 14px;      /* was 12px */
   white-space: nowrap;
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease;
+  flex-shrink: 0;
 }
 
 .skill-item:hover {
@@ -102,9 +126,10 @@
 }
 
 .skill-icon {
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   filter: brightness(0.9);
+  display: block;
 }
 
 .skill-name {
@@ -122,15 +147,15 @@
   }
 }
 
-/* Contact Button */
+/* Contact Button Container */
 .contact-button-container {
-  text-align: center;
-  margin: 2rem 0;
   display: flex;
   justify-content: center;
   gap: 1.5rem;
+  margin: 2rem 0;
 }
 
+/* Buttons */
 .contact-button,
 .github-btn {
   padding: 1rem 2.5rem;
@@ -145,8 +170,10 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  margin-top: -10px;
-  margin-bottom: 40px;
+  text-decoration: none;
+  display: inline-block; 
+  margin-top: -30px; 
+  margin-bottom: 20px;
 }
 
 .contact-button:hover,
