@@ -1,15 +1,13 @@
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 80vh;
   margin: 0;
   background-color: #0a0a0a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .title {
-  margin: 0 auto;
+  margin: 3rem auto;
   text-align: center;
   max-width: 800px;
   padding: 20px;
@@ -23,9 +21,15 @@ body {
   letter-spacing: -0.02em;
 }
 
+/* allow wrapping between inline-block characters */
+.title h1 { word-break: break-word; white-space: normal; }
+
 /* Animated character styles */
 .title h1 .char {
   display: inline-block;
+}
+
+.title h1 .char-anim {
   filter: blur(10px);
   opacity: 0;
   animation: blurIn 0.8s ease-out forwards;
@@ -170,4 +174,37 @@ body {
 .mygithubbtn:hover::before,
 .resume:hover::before {
   left: 100%;
+}
+
+/* Responsive adjustments for narrow viewports */
+@media (max-width: 600px) {
+  .title h1 {
+    font-size: 2rem;
+    word-break: break-word;
+    line-height: 1.1;
+  }
+
+  .title {
+    padding: 12px;
+    margin: 1.25rem;
+  }
+
+  .paragraph-box {
+    padding: 1.25rem;
+  }
+
+  .button-container {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+
+  .Aboutmebtn,
+  .Contactmebtn,
+  .mygithubbtn,
+  .resume {
+    width: 100%;
+    padding: 0.9rem;
+    font-size: 0.95rem;
+  }
 }

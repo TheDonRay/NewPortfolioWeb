@@ -1,0 +1,23 @@
+
+/* Global resets and responsive defaults */
+html, body, #root {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+*, *::before, *::after {
+	box-sizing: inherit;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+/* Prevent horizontal overflow caused by large padding/margins */
+body { overflow-x: hidden; }
+
+/* Make containers respect viewport width */
+.container { width: 100%; box-sizing: border-box; }
+
+/* Utility: allow long words to wrap */
+.wrap-word { word-break: break-word; }

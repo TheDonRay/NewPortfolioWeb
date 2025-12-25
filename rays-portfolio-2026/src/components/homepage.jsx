@@ -43,13 +43,40 @@ export default function HomePage() {
         if (char === " ") {
           span.className = "space";
         } else {
-          span.className = "char";
+          span.className = "char char-anim"; // separate animation class so we can re-trigger it
           span.textContent = char;
           span.style.animationDelay = `${index * 0.05}s`;
         }
 
         titleElement.appendChild(span);
       });
+
+      // Helper to re-trigger the animation on demand (used on resize)
+      const triggerAnimation = () => {
+        const chars = titleElement.querySelectorAll('.char');
+        chars.forEach((el) => {
+          el.classList.remove('char-anim');
+          // force reflow
+          void el.offsetWidth;
+          el.classList.add('char-anim');
+        });
+      };
+
+      // If viewport becomes small, re-trigger the blur animation
+      let lastSmall = window.innerWidth <= 600;
+      const onResize = () => {
+        const isSmall = window.innerWidth <= 600;
+        if (isSmall && !lastSmall) {
+          triggerAnimation();
+        }
+        lastSmall = isSmall;
+      };
+
+      window.addEventListener('resize', onResize);
+      // Clean up
+      return () => {
+        window.removeEventListener('resize', onResize);
+      };
     }
   }, []);
 

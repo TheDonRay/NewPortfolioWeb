@@ -1,7 +1,3 @@
-body { 
-    overflow-x: hidden; 
-}
-
 .container {
   display: flex;
   flex-direction: column;
@@ -16,7 +12,7 @@ body {
   max-width: 800px;   /* match your container width if needed */
   width: 100%;
   overflow: hidden;   /* IMPORTANT: clips the moving track */
-} 
+}
 /* Shared styles for all columns */ 
 .aboutRayat,
 .column {
@@ -29,7 +25,7 @@ body {
   position: relative;
   overflow: hidden; 
   width: 100%; 
-  min-width: 0;; 
+  min-width: 0; 
 }
 
 /* Subtle animated border effect */
@@ -145,6 +141,15 @@ body {
   100% {
     transform: translateX(-50%);
   }
+}
+
+/* Small screens: reduce skill item spacing and size */
+@media (max-width: 600px) {
+  .skills-track { gap: 8px; animation-duration: 18s; }
+  .skill-item { padding: 8px 10px; border-radius: 12px; }
+  .skill-icon { width: 20px; height: 20px; }
+  .skill-name { font-size: 0.85rem; }
+  .aboutRayat p, .column p { font-size: 0.95rem; }
 }
 
 /* Contact Button Container */
