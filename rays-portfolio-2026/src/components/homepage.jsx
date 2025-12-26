@@ -45,7 +45,7 @@ export default function HomePage() {
         } else {
           span.className = "char char-anim"; // separate animation class so we can re-trigger it
           span.textContent = char;
-          span.style.animationDelay = `${index * 0.05}s`;
+          span.style.animationDelay = `${index * 0.1}s`;
         }
 
         titleElement.appendChild(span);

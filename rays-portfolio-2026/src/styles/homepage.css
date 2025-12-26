@@ -63,7 +63,7 @@ body {
   position: relative;
   overflow: hidden;
   opacity: 0;
-  animation: fadeInUp 1s ease-out 0.7s forwards;
+  animation: fadeInUp 1s ease-out 0.95s forwards;
 }
 
 @keyframes fadeInUp {
