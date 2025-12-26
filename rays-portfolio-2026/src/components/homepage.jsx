@@ -23,7 +23,7 @@ export default function HomePage() {
   }
 
   function OpenPDF() {
-    const pdfURL = "../public/resume.pdf";
+    const pdfURL = "/resume.pdf";
     window.open(pdfURL, "_blank");
   }
 
