@@ -22,7 +22,10 @@ body {
 }
 
 /* allow wrapping between inline-block characters */
-.title h1 { word-break: break-word; white-space: normal; }
+.title h1 {
+  word-break: break-word;
+  white-space: normal;
+}
 
 /* Animated character styles */
 .title h1 .char {
@@ -108,52 +111,105 @@ body {
   gap: 1.5rem;
   justify-content: center;
   margin-top: 2rem;
+  align-items: center;
 }
 
-/* Button styles */
-.Aboutmebtn,
-.Contactmebtn,
-.mygithubbtn,
-.resume {
-  padding: 1rem 2.5rem;
+/* Button wrapper for tooltip positioning */
+.button-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Glassy icon button styles with magnetic effect */
+.icon-btn.glass-btn {
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
   color: #ffffff;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-  border: 1px solid #404040;
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
   cursor: pointer;
-  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
   opacity: 0;
   animation: fadeInUp 1s ease-out 0.8s forwards;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    0 8px 32px 0 rgba(0, 0, 0, 0.37),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.05);
 }
 
-/* Hover effect */
-.Aboutmebtn:hover,
-.Contactmebtn:hover,
-.mygithubbtn:hover,
-.resume:hover {
-  transform: translateY(-2px);
-  border-color: #666666;
-  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
+/* Magnetic button gets smooth transform transition */
+.magnetic-btn {
+  transition:
+    transform 0.15s ease-out,
+    border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Stagger animation for buttons */
+.button-wrapper:nth-child(1) .icon-btn {
+  animation-delay: 1s;
+}
+
+.button-wrapper:nth-child(2) .icon-btn {
+  animation-delay: 1.1s;
+}
+
+.button-wrapper:nth-child(3) .icon-btn {
+  animation-delay: 1.2s;
+}
+
+.button-wrapper:nth-child(4) .icon-btn {
+  animation-delay: 1.3s;
+}
+
+/* SVG icon styling */
+.icon-btn.glass-btn svg {
+  width: 24px;
+  height: 24px;
+  stroke: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+}
+
+/* Hover effects - enhanced glassy look */
+.icon-btn.glass-btn:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    inset 0 2px 2px 0 rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.icon-btn.glass-btn:hover svg {
+  stroke: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.4));
 }
 
 /* Active/click effect */
-.Aboutmebtn:active,
-.Contactmebtn:active,
-.mygithubbtn:active,
-.resume:active {
-  transform: translateY(0);
+.icon-btn.glass-btn:active {
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.05);
 }
 
-/* Subtle shine effect on hover */
-.Aboutmebtn::before,
-.Contactmebtn::before,
-.mygithubbtn::before,
-.resume::before {
+/* Glass shimmer effect */
+.icon-btn.glass-btn::before {
   content: "";
   position: absolute;
   top: 0;
@@ -167,13 +223,74 @@ body {
     transparent
   );
   transition: left 0.5s ease;
+  z-index: 1;
 }
 
-.Aboutmebtn:hover::before,
-.Contactmebtn:hover::before,
-.mygithubbtn:hover::before,
-.resume:hover::before {
+.icon-btn.glass-btn:hover::before {
   left: 100%;
+}
+
+/* Frosted glass glow on hover */
+.icon-btn.glass-btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.4s ease,
+    height 0.4s ease;
+  z-index: 0;
+}
+
+.icon-btn.glass-btn:hover::after {
+  width: 150px;
+  height: 150px;
+}
+
+/* Tooltip label styling */
+.button-label {
+  position: absolute;
+  bottom: -32px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 0.375rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.button-label.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Focus state for accessibility */
+.icon-btn.glass-btn:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.1),
+    0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 /* Responsive adjustments for narrow viewports */
@@ -194,17 +311,33 @@ body {
   }
 
   .button-container {
-    flex-direction: column;
-    gap: 0.75rem;
-    align-items: stretch;
+    gap: 1rem;
   }
 
-  .Aboutmebtn,
-  .Contactmebtn,
-  .mygithubbtn,
-  .resume {
-    width: 100%;
-    padding: 0.9rem;
-    font-size: 0.95rem;
+  .icon-btn.glass-btn {
+    width: 56px;
+    height: 56px;
+  }
+
+  .icon-btn.glass-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .button-label {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .button-container {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .icon-btn.glass-btn {
+    width: 48px;
+    height: 48px;
   }
 }

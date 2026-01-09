@@ -7,13 +7,13 @@
   padding: 3rem 1rem;
 }
 
-/* added this*/ 
+/* added this*/
 .aboutRayat {
-  max-width: 800px;   /* match your container width if needed */
+  max-width: 800px; /* match your container width if needed */
   width: 100%;
-  overflow: hidden;   /* IMPORTANT: clips the moving track */
+  overflow: hidden; /* IMPORTANT: clips the moving track */
 }
-/* Shared styles for all columns */ 
+/* Shared styles for all columns */
 .aboutRayat,
 .column {
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
@@ -21,11 +21,14 @@
   padding: 2.5rem;
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
   position: relative;
-  overflow: hidden; 
-  width: 100%; 
-  min-width: 0; 
+  overflow: hidden;
+  width: 100%;
+  min-width: 0;
 }
 
 /* Subtle animated border effect */
@@ -83,10 +86,10 @@
   padding: 10px 0;
   border-radius: 14px;
   position: relative;
-  z-index: 1; 
+  z-index: 1;
   width: 100%;
-  max-width: 100%; 
-  min-width: 0; 
+  max-width: 100%;
+  min-width: 0;
 
   display: flex;
   align-items: center;
@@ -95,23 +98,23 @@
 .skills-track {
   display: flex;
   align-items: center;
-  gap: 12px;              /* was 2rem */
-  animation: scroll 22s linear infinite;  /* was 40s */
-  width: max-content;     /* was fit-content */
-  flex-wrap: nowrap;      /* add this */
+  gap: 12px; /* was 2rem */
+  animation: scroll 22s linear infinite; /* was 40s */
+  width: max-content; /* was fit-content */
+  flex-wrap: nowrap; /* add this */
   will-change: transform;
-  padding: 0 14px;        /* add this */
+  padding: 0 14px; /* add this */
 }
 
 .skill-item {
-  display: inline-flex;     /* was flex */
+  display: inline-flex; /* was flex */
   align-items: center;
   justify-content: center;
-  gap: 10px;                /* was 0.5rem */
+  gap: 10px; /* was 0.5rem */
   background: rgba(255, 255, 255, 0.06); /* optional: cleaner */
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  padding: 10px 14px;       /* was 0.75rem 1.25rem */
-  border-radius: 14px;      /* was 12px */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 14px; /* was 0.75rem 1.25rem */
+  border-radius: 14px; /* was 12px */
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -145,11 +148,25 @@
 
 /* Small screens: reduce skill item spacing and size */
 @media (max-width: 600px) {
-  .skills-track { gap: 8px; animation-duration: 18s; }
-  .skill-item { padding: 8px 10px; border-radius: 12px; }
-  .skill-icon { width: 20px; height: 20px; }
-  .skill-name { font-size: 0.85rem; }
-  .aboutRayat p, .column p { font-size: 0.95rem; }
+  .skills-track {
+    gap: 8px;
+    animation-duration: 18s;
+  }
+  .skill-item {
+    padding: 8px 10px;
+    border-radius: 12px;
+  }
+  .skill-icon {
+    width: 20px;
+    height: 20px;
+  }
+  .skill-name {
+    font-size: 0.85rem;
+  }
+  .aboutRayat p,
+  .column p {
+    font-size: 0.95rem;
+  }
 }
 
 /* Contact Button Container */
@@ -176,8 +193,8 @@
   position: relative;
   overflow: hidden;
   text-decoration: none;
-  display: inline-block; 
-  margin-top: -30px; 
+  display: inline-block;
+  margin-top: -30px;
   margin-bottom: 20px;
 }
 
