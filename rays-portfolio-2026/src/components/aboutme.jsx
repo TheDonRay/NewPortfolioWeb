@@ -130,17 +130,25 @@ export default function AboutMe() {
 
   return (
     <>
+      {/* Animated background gradient - matching homepage */}
+      <div className="gradient-bg"></div>
+      <div className="noise-overlay"></div>
+
       <div className="container">
         <div className="aboutRayat">
+          {/* Floating orbs decoration */}
+          <div className="orb orb-1"></div>
+          <div className="orb orb-2"></div>
+          
           <h1>Who is Rayat?</h1>
           <p>
-            I’m a junior at Hunter College studying Computer Science with a
-            minor in Mathematics. I’m an aspiring backend developer with a
+            I'm a junior at Hunter College studying Computer Science with a
+            minor in Mathematics. I'm an aspiring backend developer with a
             strong focus on JavaScript and Express.js. I enjoy solving
             real-world problems through code and building reliable, user-focused
-            systems. I’m passionate about backend engineering, quality software,
+            systems. I'm passionate about backend engineering, quality software,
             and continuously learning—embracing challenges, bugs, and mistakes
-            as part of the growth process
+            as part of the growth process.
           </p>
 
           {/* Scrolling Skills Strip */}
@@ -162,25 +170,27 @@ export default function AboutMe() {
         </div>
 
         <div className="column hobbies">
+          <div className="orb orb-3"></div>
           <h1>Hobbies/Interests</h1>
           <p>
-            When I’m not coding, I’m usually scrolling through Facebook
-            Marketplace admiring cars—especially the Infiniti Q60 and BMWs. I’m
-            big into gaming, particularly Fortnite’s Ballistic mode for its
+            When I'm not coding, I'm usually scrolling through Facebook
+            Marketplace admiring cars—especially the Infiniti Q60 and BMWs. I'm
+            big into gaming, particularly Fortnite's Ballistic mode for its
             fast, strategy-driven gameplay. I also enjoy LeetCoding as a mental
             workout, and I like to unwind with long night drives, music on,
-            clearing my head before the next challenge
+            clearing my head before the next challenge.
           </p>
         </div>
 
         <div className="column goals">
+          <div className="orb orb-4"></div>
           <h1>My Goals</h1>
           <p>
-            My goal is simple: to build with purpose. I’m especially passionate
+            My goal is simple: to build with purpose. I'm especially passionate
             about working in the medical space, using technology to make
             healthcare more accessible and practical for everyday people. I
             aspire to grow as a software engineer and a businessman, creating
-            meaningful ventures in New York and in my home country, Bangladesh
+            meaningful ventures in New York and in my home country, Bangladesh.
           </p>
         </div>
       </div>
