@@ -509,7 +509,7 @@ body {
 /* Responsive adjustments */
 @media (max-width: 600px) {
   .title h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     word-break: break-word;
     line-height: 1.2;
   }
@@ -545,7 +545,7 @@ body {
 
 @media (max-width: 400px) {
   .title h1 {
-    font-size: 2rem;
+    font-size: 1.65rem;
   }
 
   .button-container {
