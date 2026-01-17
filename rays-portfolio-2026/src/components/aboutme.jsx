@@ -1,209 +1,83 @@
-import "../styles/aboutme.css";
+import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import "../styles/aboutme.css";
+
+const skills = [
+  "JavaScript", "TypeScript", "Python", "C++", "SQL",
+  "React", "Node.js", "Express", "Tailwind CSS",
+  "Git", "GitHub", "Docker", "MongoDB", "MySQL",
+  "Jest", "Postman", "Jira"
+];
 
 export default function AboutMe() {
-  const skills = [
-    // Languages
-    {
-      name: "TypeScript",
-      icon: "https://cdn-icons-png.flaticon.com/512/5968/5968381.png",
-    },
-    {
-      name: "JavaScript",
-      icon: "https://cdn-icons-png.flaticon.com/512/5968/5968292.png",
-    },
-    {
-      name: "C++",
-      icon: "https://cdn-icons-png.flaticon.com/512/6132/6132222.png",
-    },
-    {
-      name: "Python",
-      icon: "https://cdn-icons-png.flaticon.com/512/5968/5968350.png",
-    },
-    {
-      name: "SQL",
-      icon: "https://cdn-icons-png.flaticon.com/512/4492/4492311.png",
-    },
-    {
-      name: "HTML",
-      icon: "https://cdn-icons-png.flaticon.com/512/732/732212.png",
-    },
-    {
-      name: "CSS",
-      icon: "https://cdn-icons-png.flaticon.com/512/732/732190.png",
-    },
-
-    // Frameworks & Libraries
-    {
-      name: "React.js",
-      icon: "https://cdn-icons-png.flaticon.com/512/1126/1126012.png",
-    },
-    {
-      name: "Node.js",
-      icon: "https://cdn-icons-png.flaticon.com/512/919/919825.png",
-    },
-    {
-      name: "Express.js",
-      icon: "https://cdn-icons-png.flaticon.com/512/5968/5968322.png",
-    },
-    {
-      name: "TailWind CSS",
-      icon: "https://cdn-icons-png.flaticon.com/512/8099/8099234.png",
-    },
-    {
-      name: "Vanta.js",
-      icon: "https://cdn-icons-png.flaticon.com/512/1005/1005141.png",
-    },
-
-    // Developer Tools
-    {
-      name: "Git",
-      icon: "https://cdn-icons-png.flaticon.com/512/2111/2111288.png",
-    },
-    {
-      name: "GitHub",
-      icon: "https://cdn-icons-png.flaticon.com/512/733/733553.png",
-    },
-    {
-      name: "Docker",
-      icon: "https://cdn-icons-png.flaticon.com/512/919/919853.png",
-    },
-    {
-      name: "npm",
-      icon: "https://cdn-icons-png.flaticon.com/512/919/919827.png",
-    },
-    {
-      name: "Jupyter",
-      icon: "https://cdn-icons-png.flaticon.com/512/5969/5969294.png",
-    },
-    {
-      name: "Playwright",
-      icon: "https://cdn-icons-png.flaticon.com/512/8099/8099173.png",
-    },
-    {
-      name: "Jest",
-      icon: "https://cdn-icons-png.flaticon.com/512/5968/5968358.png",
-    },
-    {
-      name: "Postman",
-      icon: "https://cdn-icons-png.flaticon.com/512/5968/5968525.png",
-    },
-    {
-      name: "Jira",
-      icon: "https://cdn-icons-png.flaticon.com/512/5968/5968875.png",
-    },
-
-    // Backend & API
-    {
-      name: "REST API",
-      icon: "https://cdn-icons-png.flaticon.com/512/2165/2165004.png",
-    },
-    {
-      name: "JSON",
-      icon: "https://cdn-icons-png.flaticon.com/512/136/136525.png",
-    },
-
-    // Databases
-    {
-      name: "MongoDB",
-      icon: "https://cdn-icons-png.flaticon.com/512/919/919836.png",
-    },
-    {
-      name: "MySQL",
-      icon: "https://cdn-icons-png.flaticon.com/512/5968/5968313.png",
-    },
-  ];
-
   const navigate = useNavigate();
 
-  function Contactme() {
-    navigate("/ContactMe");
-  }
-
-  function mygithub() {
-    window.open(
-      "https://github.com/TheDonRay",
-      "_blank",
-      "noopener,noreferrer",
-    );
-  }
+  const fadeIn = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+  };
 
   return (
-    <>
-      {/* Animated background gradient - matching homepage */}
-      <div className="gradient-bg"></div>
-      <div className="noise-overlay"></div>
-
-      <div className="container">
-        <div className="aboutRayat">
-          {/* Floating orbs decoration */}
-          <div className="orb orb-1"></div>
-          <div className="orb orb-2"></div>
-          
-          <h1>Who is Rayat?</h1>
-          <p>
-            I'm a junior at Hunter College studying Computer Science with a
-            minor in Mathematics. I'm an aspiring backend developer with a
-            strong focus on JavaScript and Express.js. I enjoy solving
-            real-world problems through code and building reliable, user-focused
-            systems. I'm passionate about backend engineering, quality software,
-            and continuously learning—embracing challenges, bugs, and mistakes
-            as part of the growth process.
+    <main className="about">
+      <div className="about-content">
+        <motion.section className="about-section" {...fadeIn} transition={{ delay: 0.1 }}>
+          <h1 className="about-title">About Me</h1>
+          <p className="about-text">
+            I'm a junior at Hunter College studying Computer Science with a minor in Mathematics.
+            I'm an aspiring backend developer with a strong focus on JavaScript and Express.js.
           </p>
+          <p className="about-text">
+            I enjoy solving real-world problems through code and building reliable, user-focused
+            systems. I'm passionate about quality software and continuously learning—embracing
+            challenges, bugs, and mistakes as part of the growth process.
+          </p>
+        </motion.section>
 
-          {/* Scrolling Skills Strip */}
-          <div className="skills-marquee">
-            <div className="skills-track">
-              {/* Duplicate the skills array for seamless loop */}
-              {[...skills, ...skills].map((skill, index) => (
-                <div key={index} className="skill-item">
-                  <img
-                    src={skill.icon}
-                    alt={skill.name}
-                    className="skill-icon"
-                  />
-                  <span className="skill-name">{skill.name}</span>
-                </div>
-              ))}
-            </div>
+        <motion.section className="about-section" {...fadeIn} transition={{ delay: 0.2 }}>
+          <h2 className="section-title">Education</h2>
+          <div className="education-card">
+            <p className="education-school">Hunter College, CUNY</p>
+            <p className="education-degree">B.A. Computer Science, Minor in Mathematics</p>
+            <p className="education-status">Junior · Expected 2026</p>
           </div>
-        </div>
+        </motion.section>
 
-        <div className="column hobbies">
-          <div className="orb orb-3"></div>
-          <h1>Hobbies/Interests</h1>
-          <p>
-            When I'm not coding, I'm usually scrolling through Facebook
-            Marketplace admiring cars—especially the Infiniti Q60 and BMWs. I'm
-            big into gaming, particularly Fortnite's Ballistic mode for its
-            fast, strategy-driven gameplay. I also enjoy LeetCoding as a mental
-            workout, and I like to unwind with long night drives, music on,
-            clearing my head before the next challenge.
+        <motion.section className="about-section" {...fadeIn} transition={{ delay: 0.3 }}>
+          <h2 className="section-title">Skills</h2>
+          <div className="skills-grid">
+            {skills.map((skill) => (
+              <span key={skill} className="skill-tag">{skill}</span>
+            ))}
+          </div>
+        </motion.section>
+
+        <motion.section className="about-section" {...fadeIn} transition={{ delay: 0.4 }}>
+          <h2 className="section-title">Goals</h2>
+          <p className="about-text">
+            My goal is to build with purpose. I'm passionate about using technology to make
+            healthcare more accessible. I aspire to grow as a software engineer, creating
+            meaningful ventures in New York and in Bangladesh.
           </p>
-        </div>
+        </motion.section>
 
-        <div className="column goals">
-          <div className="orb orb-4"></div>
-          <h1>My Goals</h1>
-          <p>
-            My goal is simple: to build with purpose. I'm especially passionate
-            about working in the medical space, using technology to make
-            healthcare more accessible and practical for everyday people. I
-            aspire to grow as a software engineer and a businessman, creating
-            meaningful ventures in New York and in my home country, Bangladesh.
+        <motion.section className="about-section" {...fadeIn} transition={{ delay: 0.5 }}>
+          <h2 className="section-title">Interests</h2>
+          <p className="about-text">
+            When I'm not coding, I'm scrolling through Facebook Marketplace admiring cars—especially
+            the Infiniti Q60 and BMWs. I enjoy gaming, LeetCoding as a mental workout, and long
+            night drives to clear my head.
           </p>
-        </div>
-      </div>
+        </motion.section>
 
-      <div className="contact-button-container">
-        <button onClick={Contactme} className="contact-button">
-          Contact Me
-        </button>
-
-        <button onClick={mygithub} className="github-btn">
-          My Github
-        </button>
+        <motion.div className="about-cta" {...fadeIn} transition={{ delay: 0.6 }}>
+          <a href="/resume.pdf" target="_blank" className="btn btn-primary">
+            View Resume
+          </a>
+          <button className="btn btn-secondary" onClick={() => navigate("/ContactMe")}>
+            Contact Me
+          </button>
+        </motion.div>
       </div>
-    </>
+    </main>
   );
 }

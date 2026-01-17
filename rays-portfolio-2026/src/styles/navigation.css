@@ -1,0 +1,110 @@
+/* Navigation - Centered, Clean */
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-nav);
+  padding: var(--space-4) var(--space-6);
+}
+
+.nav-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-6);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+/* Logo */
+.nav-logo {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: var(--transition-base);
+}
+
+.nav-logo:hover {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
+/* Nav Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.nav-link {
+  position: relative;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  border-radius: var(--radius-full);
+  transition: var(--transition-base);
+}
+
+.nav-link:hover {
+  color: var(--color-text);
+}
+
+.nav-link.active {
+  color: var(--color-text);
+}
+
+.nav-indicator {
+  position: absolute;
+  inset: 0;
+  background: var(--color-bg-hover);
+  border-radius: var(--radius-full);
+  z-index: -1;
+}
+
+/* Resume Button */
+.nav-resume {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-bg);
+  background: var(--color-text);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  transition: var(--transition-base);
+}
+
+.nav-resume:hover {
+  opacity: 0.9;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .nav {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .nav-inner {
+    padding: var(--space-2) var(--space-4);
+  }
+
+  .nav-link {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-xs);
+  }
+
+  .nav-logo,
+  .nav-resume {
+    font-size: var(--text-xs);
+    padding: var(--space-2);
+  }
+}

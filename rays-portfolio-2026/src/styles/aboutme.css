@@ -1,547 +1,152 @@
-/* Futuristic grid background */
-.gradient-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -2;
-  background-color: #000000;
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
-  animation: gridPulse 4s ease-in-out infinite;
+/* About Page - Clean Black & White */
+
+.about {
+  min-height: 100vh;
+  padding: 120px var(--space-6) var(--space-16);
 }
 
-@keyframes gridPulse {
-  0%, 100% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-/* Scanline effect overlay */
-.noise-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0.03) 0px,
-    rgba(255, 255, 255, 0.03) 1px,
-    transparent 1px,
-    transparent 2px
-  );
-  animation: scanlines 8s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes scanlines {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(50px);
-  }
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  max-width: 900px;
+.about-content {
+  max-width: 650px;
   margin: 0 auto;
-  padding: 3rem 1.5rem;
-  position: relative;
-  z-index: 1;
 }
 
-/* Shared styles for all columns with futuristic black and white design */
-.aboutRayat,
-.column {
-  background: #000000;
-  border: 2px solid #ffffff;
-  padding: 3rem;
-  border-radius: 0;
-  box-shadow: 
-    0 0 0 4px #000000,
-    0 0 0 6px #ffffff,
-    0 20px 60px rgba(255, 255, 255, 0.1),
-    inset 0 0 40px rgba(255, 255, 255, 0.03);
-  transition:
-    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  min-width: 0;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease-out forwards;
-  clip-path: polygon(
-    0 10px,
-    10px 0,
-    calc(100% - 10px) 0,
-    100% 10px,
-    100% calc(100% - 10px),
-    calc(100% - 10px) 100%,
-    10px 100%,
-    0 calc(100% - 10px)
-  );
-}
-
-/* Stagger animations for cards */
-.aboutRayat {
-  animation-delay: 0.2s;
-}
-
-.column.hobbies {
-  animation-delay: 0.4s;
-}
-
-.column.goals {
-  animation-delay: 0.6s;
-}
-
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Corner decorations */
-.orb {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: transparent;
-  border: 2px solid #ffffff;
-  opacity: 0.8;
-  pointer-events: none;
-  animation: cornerPulse 3s ease-in-out infinite;
-}
-
-.orb::before {
-  content: "";
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: #ffffff;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-}
-
-.orb-1 {
-  top: -10px;
-  right: -10px;
-  animation-delay: 0s;
-}
-
-.orb-2 {
-  bottom: -10px;
-  left: -10px;
-  animation-delay: 1.5s;
-}
-
-.orb-3 {
-  top: -10px;
-  left: -10px;
-  animation-delay: 0.75s;
-}
-
-.orb-4 {
-  bottom: -10px;
-  right: -10px;
-  animation-delay: 2.25s;
-}
-
-@keyframes cornerPulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 1;
-  }
-}
-
-/* Animated border effect */
-.aboutRayat::before,
-.column::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.1) 50%,
-    transparent 100%
-  );
-  animation: borderSweep 3s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes borderSweep {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-/* Data stream effect on hover */
-.aboutRayat::after,
-.column::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    repeating-linear-gradient(
-      90deg,
-      transparent 0px,
-      transparent 2px,
-      rgba(255, 255, 255, 0.02) 2px,
-      rgba(255, 255, 255, 0.02) 4px
-    );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-}
-
-.aboutRayat:hover,
-.column:hover {
-  transform: translateY(-8px);
-  box-shadow: 
-    0 0 0 4px #000000,
-    0 0 0 6px #ffffff,
-    0 25px 70px rgba(255, 255, 255, 0.2),
-    inset 0 0 40px rgba(255, 255, 255, 0.05);
-}
-
-.aboutRayat:hover::after,
-.column:hover::after {
-  opacity: 1;
-}
-
-.aboutRayat h1,
-.column h1 {
-  font-size: 1.75rem;
-  margin-bottom: 1.25rem;
-  color: #ffffff;
-  font-weight: 900;
-  letter-spacing: 0.05em;
-  position: relative;
-  z-index: 1;
-  text-transform: uppercase;
-  text-shadow: 
-    0 0 20px rgba(255, 255, 255, 0.5),
-    0 0 40px rgba(255, 255, 255, 0.3);
-}
-
-.aboutRayat p,
-.column p {
-  color: #ffffff;
-  line-height: 1.9;
-  font-size: 1.05rem;
-  font-weight: 400;
-  letter-spacing: 0.03em;
-  position: relative;
-  z-index: 1;
-  text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
-}
-
-/* Scrolling Skills Strip - futuristic black and white design */
-.skills-marquee {
-  margin-top: 1.5rem;
-  overflow: hidden;
-  background: #000000;
-  border: 2px solid #ffffff;
-  padding: 12px 0;
-  border-radius: 0;
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-  display: flex;
-  align-items: center;
-  box-shadow: 
-    0 0 0 2px #000000,
-    0 0 0 4px #ffffff,
-    inset 0 2px 10px rgba(255, 255, 255, 0.05),
-    0 4px 20px rgba(255, 255, 255, 0.1);
-}
-
-.skills-track {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  animation: scroll 22s linear infinite;
-  width: max-content;
-  flex-wrap: nowrap;
-  will-change: transform;
-  padding: 0 14px;
-}
-
-.skill-item {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: #000000;
-  border: 2px solid #ffffff;
-  padding: 10px 16px;
-  border-radius: 0;
-  white-space: nowrap;
-  flex-shrink: 0;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 
-    0 0 0 2px #000000,
-    0 0 10px rgba(255, 255, 255, 0.2);
-  clip-path: polygon(
-    0 4px,
-    4px 0,
-    calc(100% - 4px) 0,
-    100% 4px,
-    100% calc(100% - 4px),
-    calc(100% - 4px) 100%,
-    4px 100%,
-    0 calc(100% - 4px)
-  );
-}
-
-.skill-item:hover {
-  background: #ffffff;
-  border-color: #000000;
-  transform: scale(1.08) translateY(-2px);
-  box-shadow: 
-    0 0 0 2px #ffffff,
-    0 8px 20px rgba(255, 255, 255, 0.3);
-}
-
-.skill-icon {
-  width: 24px;
-  height: 24px;
-  filter: brightness(0.95) drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
-  display: block;
-  transition: filter 0.3s ease;
-}
-
-.skill-item:hover .skill-icon {
-  filter: brightness(1.1) drop-shadow(0 0 8px rgba(0, 0, 0, 0.3));
-}
-
-.skill-name {
-  color: #ffffff;
+/* Title */
+.about-title {
+  font-size: clamp(2rem, 6vw, 3rem);
   font-weight: 700;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  transition: color 0.3s ease;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-6);
 }
 
-.skill-item:hover .skill-name {
-  color: #000000;
+/* Sections */
+.about-section {
+  margin-bottom: var(--space-10);
 }
 
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-/* Contact Button Container */
-.contact-button-container {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin: 2rem 0;
-  position: relative;
-  z-index: 1;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease-out 0.8s forwards;
-}
-
-/* Futuristic hexagonal buttons */
-.contact-button,
-.github-btn {
-  padding: 1.1rem 2.8rem;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #ffffff;
-  background: #000000;
-  border: 2px solid #ffffff;
-  border-radius: 0;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: visible;
-  text-decoration: none;
-  display: inline-block;
+.section-title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  box-shadow:
-    0 0 0 4px #000000,
-    0 0 20px rgba(255, 255, 255, 0.3),
-    inset 0 0 20px rgba(255, 255, 255, 0.05);
-  margin-bottom: 3rem;
-  clip-path: polygon(
-    0 6px,
-    6px 0,
-    calc(100% - 6px) 0,
-    100% 6px,
-    100% calc(100% - 6px),
-    calc(100% - 6px) 100%,
-    6px 100%,
-    0 calc(100% - 6px)
-  );
+  margin-bottom: var(--space-4);
 }
 
-.contact-button:hover,
-.github-btn:hover {
-  transform: translateY(-4px);
-  background: #ffffff;
-  color: #000000;
-  box-shadow: 
-    0 0 0 4px #000000,
-    0 0 40px rgba(255, 255, 255, 0.6),
-    0 0 60px rgba(255, 255, 255, 0.4),
-    inset 0 0 30px rgba(0, 0, 0, 0.2);
+.about-text {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  margin-bottom: var(--space-4);
 }
 
-.contact-button:active,
-.github-btn:active {
-  transform: translateY(-1px);
+.about-text:last-child {
+  margin-bottom: 0;
 }
 
-/* Corner markers for buttons */
-.contact-button::before,
-.github-btn::before {
-  content: "";
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: #ffffff;
-  top: -3px;
-  left: -3px;
-  transition: all 0.3s ease;
-  box-shadow: 
-    0 0 10px rgba(255, 255, 255, 0.8),
-    0 0 20px rgba(255, 255, 255, 0.4);
+/* Education */
+.education-card {
+  padding: var(--space-5);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
 }
 
-.contact-button::after,
-.github-btn::after {
-  content: "";
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: #ffffff;
-  bottom: -3px;
-  right: -3px;
-  transition: all 0.3s ease;
-  box-shadow: 
-    0 0 10px rgba(255, 255, 255, 0.8),
-    0 0 20px rgba(255, 255, 255, 0.4);
+.education-school {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-1);
 }
 
-.contact-button:hover::before,
-.github-btn:hover::before,
-.contact-button:hover::after,
-.github-btn:hover::after {
-  background: #000000;
-  box-shadow: 
-    0 0 10px rgba(255, 255, 255, 0.6),
-    0 0 20px rgba(255, 255, 255, 0.3);
+.education-degree {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
 }
 
-/* Responsive adjustments */
+.education-status {
+  font-size: var(--text-sm);
+  color: var(--color-text-subtle);
+  font-family: var(--font-mono);
+}
+
+/* Skills */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.skill-tag {
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  transition: var(--transition-base);
+}
+
+.skill-tag:hover {
+  background: var(--color-text);
+  color: var(--color-bg);
+  border-color: var(--color-text);
+}
+
+/* CTA */
+.about-cta {
+  display: flex;
+  gap: var(--space-3);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-border);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  transition: var(--transition-base);
+}
+
+.btn-primary {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border-hover);
+}
+
+.btn-secondary:hover {
+  background: var(--color-bg-hover);
+}
+
+/* Mobile */
 @media (max-width: 600px) {
-  .container {
-    padding: 2rem 1rem;
-    gap: 2rem;
+  .about {
+    padding: 100px var(--space-4) var(--space-12);
   }
 
-  .aboutRayat,
-  .column {
-    padding: 2rem;
+  .about-section {
+    margin-bottom: var(--space-8);
   }
 
-  .aboutRayat h1,
-  .column h1 {
-    font-size: 1.5rem;
+  .about-cta {
+    flex-direction: column;
   }
 
-  .aboutRayat p,
-  .column p {
-    font-size: 0.95rem;
-    line-height: 1.8;
-  }
-
-  .skills-track {
-    gap: 10px;
-    animation-duration: 18s;
-  }
-
-  .skill-item {
-    padding: 8px 12px;
-    border-radius: 0;
-  }
-
-  .skill-icon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .skill-name {
-    font-size: 0.75rem;
-  }
-
-  .contact-button-container {
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-  }
-
-  .contact-button,
-  .github-btn {
-    padding: 1rem 1.5rem;
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 400px) {
-  .aboutRayat h1,
-  .column h1 {
-    font-size: 1.35rem;
-  }
-
-  .contact-button,
-  .github-btn {
-    padding: 0.85rem 1.75rem;
-    font-size: 0.8rem;
+  .btn {
+    width: 100%;
+    justify-content: center;
   }
 }
