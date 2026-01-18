@@ -35,18 +35,36 @@ export default function ContactMe() {
   return (
     <main className="contact">
       <div className="contact-content">
-        <motion.h1 className="contact-title" {...fadeIn} transition={{ delay: 0.1 }}>
+        <motion.h1
+          className="contact-title"
+          {...fadeIn}
+          transition={{ delay: 0.1 }}
+        >
           Get in Touch
         </motion.h1>
 
-        <motion.p className="contact-subtitle" {...fadeIn} transition={{ delay: 0.2 }}>
-          I'm always open to new opportunities and interesting projects.
-          Feel free to reach out.
+        <motion.p
+          className="contact-subtitle"
+          {...fadeIn}
+          transition={{ delay: 0.2 }}
+        >
+          I'm always open to new opportunities and interesting projects. Feel
+          free to reach out.
         </motion.p>
 
-        <motion.div className="contact-list" {...fadeIn} transition={{ delay: 0.3 }}>
+        <motion.div
+          className="contact-list"
+          {...fadeIn}
+          transition={{ delay: 0.3 }}
+        >
           {contacts.map(({ icon: Icon, label, value, href }) => (
-            <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="contact-item">
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-item"
+            >
               <Icon size={20} className="contact-icon" />
               <div className="contact-info">
                 <span className="contact-label">{label}</span>
@@ -56,7 +74,11 @@ export default function ContactMe() {
           ))}
         </motion.div>
 
-        <motion.div className="contact-footer" {...fadeIn} transition={{ delay: 0.4 }}>
+        <motion.div
+          className="contact-footer"
+          {...fadeIn}
+          transition={{ delay: 0.4 }}
+        >
           <button className="back-link" onClick={() => navigate("/")}>
             <ArrowLeft size={16} />
             Back to Home

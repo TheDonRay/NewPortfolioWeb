@@ -33,7 +33,7 @@ export default function HomePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          Software Engineer & CS Student
+          Software Engineer & Node.js Advocate
         </motion.p>
 
         <motion.p
@@ -42,8 +42,8 @@ export default function HomePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
         >
-          I build things for the web. Currently focused on backend development
-          with JavaScript and Express.js, turning ideas into real solutions.
+          I build with passion. Whether it’s exploring new ideas, debugging
+          complex problems, or learning something new, building is my escape.
         </motion.p>
 
         <motion.div
@@ -52,11 +52,17 @@ export default function HomePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
         >
-          <button className="btn btn-primary" onClick={() => navigate("/AboutMe")}>
+          <button
+            className="btn btn-primary"
+            onClick={() => navigate("/AboutMe")}
+          >
             About Me
             <ArrowRight size={16} />
           </button>
-          <button className="btn btn-secondary" onClick={() => navigate("/ContactMe")}>
+          <button
+            className="btn btn-secondary"
+            onClick={() => navigate("/ContactMe")}
+          >
             Get in Touch
           </button>
         </motion.div>
@@ -67,17 +73,23 @@ export default function HomePage() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
         >
-          <a href="https://github.com/TheDonRay" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://github.com/TheDonRay"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             GitHub
           </a>
           <span className="link-dot" />
-          <a href="https://www.linkedin.com/in/rayatchowdhury2005/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.linkedin.com/in/rayatchowdhury2005/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             LinkedIn
           </a>
           <span className="link-dot" />
-          <a href="mailto:rayatchowdhury2005@gmail.com">
-            Email
-          </a>
+          <a href="mailto:rayatchowdhury2005@gmail.com">Email</a>
         </motion.div>
       </div>
 

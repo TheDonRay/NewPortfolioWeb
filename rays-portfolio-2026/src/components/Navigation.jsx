@@ -38,11 +38,7 @@ export default function Navigation() {
           ))}
         </div>
 
-        <a
-          href="/resume.pdf"
-          target="_blank"
-          className="nav-resume"
-        >
+        <a href="/resume.pdf" target="_blank" className="nav-resume">
           Resume
         </a>
       </div>
