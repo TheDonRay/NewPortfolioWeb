@@ -33,7 +33,7 @@ export default function HomePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          Software Engineer & Node.js Advocate
+          Software Engineer & Node.js Enthusiast
         </motion.p>
 
         <motion.p

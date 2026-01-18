@@ -72,7 +72,7 @@ export default function AboutMe() {
             <p className="education-degree">
               B.A. Computer Science, Minor in Mathematics
             </p>
-            <p className="education-status">Junior · Expected 2026</p>
+            <p className="education-status">Junior · Expected 2027</p>
           </div>
         </motion.section>
 
@@ -98,10 +98,11 @@ export default function AboutMe() {
         >
           <h2 className="section-title">Goals</h2>
           <p className="about-text">
-            My goal is to build with purpose. I'm passionate about using
-            technology to make healthcare more accessible. I aspire to grow as a
-            software engineer, creating meaningful ventures in New York and in
-            Bangladesh.
+            My goal is to build with purpose. I’m driven to use technology to
+            make healthcare more accessible, whether through medical solutions
+            or tools that support people emotionally and mentally. I aim to grow
+            as a software engineer while building meaningful ventures in New
+            York and Bangladesh.
           </p>
         </motion.section>
 
@@ -112,10 +113,10 @@ export default function AboutMe() {
         >
           <h2 className="section-title">Interests</h2>
           <p className="about-text">
-            When I'm not coding, I'm scrolling through Facebook Marketplace
-            admiring cars—especially the Infiniti Q60 and BMWs. I enjoy gaming,
-            LeetCoding as a mental workout, and long night drives to clear my
-            head.
+            When I’m not coding, you’ll usually find me scrolling through
+            Facebook Marketplace admiring cars, especially the Infiniti Q60 and
+            BMWs. I also enjoy gaming, playing basketball, and Fortnite’s
+            Ballistic mode, a fast-paced, strategy-driven first-person shooter
           </p>
         </motion.section>
 
