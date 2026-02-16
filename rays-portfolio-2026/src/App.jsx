@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion"; 
-import { Analytics } from "@vercel/analytics/next"; 
+import { Analytics } from "@vercel/analytics/react"; 
 import HomePage from "./components/homepage.jsx";
 import AboutMe from "./components/aboutme.jsx";
 import ContactMe from "./components/contactme.jsx";
