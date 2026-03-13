@@ -1,5 +1,0 @@
-{
-  "permissions": {
-    "allow": ["Bash(node find-icons.mjs:*)", "Bash(npm run build:*)"]
-  }
-}
