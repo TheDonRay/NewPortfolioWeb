@@ -15,6 +15,7 @@
 /* ── Page scaffold ───────────────────────────────────────────── */
 .about {
   min-height: 100vh;
+  min-height: 100dvh;
   padding: 128px 64px 88px;
   position: relative;
   overflow-x: hidden;
@@ -564,5 +565,32 @@
   .cta-row {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .cta-btn {
+    /* Comfortable thumb target — 13px padding alone lands under 40px. */
+    min-height: 46px;
+  }
+}
+
+@media (max-width: 860px) {
+  .cta-row {
+    flex-wrap: wrap;
+  }
+}
+
+@media (hover: none) {
+  .cta-btn--fill:hover {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  .cta-btn--ghost:hover {
+    color: rgba(255, 255, 255, 0.38);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .cta-btn:active {
+    opacity: 0.82;
   }
 }
