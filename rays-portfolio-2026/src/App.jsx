@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion"; 
+import { AnimatePresence, motion, MotionConfig } from "framer-motion"; 
 import { Analytics } from "@vercel/analytics/react"; 
 import HomePage from "./components/homepage.jsx";
 import AboutMe from "./components/aboutme.jsx";
@@ -30,11 +30,13 @@ function AnimatedRoutes() {
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navigation />
-      <AnimatedRoutes />
-      <Analytics />
-    </BrowserRouter>
+    <MotionConfig reducedMotion="user">
+      <BrowserRouter>
+        <Navigation />
+        <AnimatedRoutes />
+        <Analytics />
+      </BrowserRouter>
+    </MotionConfig>
   );
 }
 

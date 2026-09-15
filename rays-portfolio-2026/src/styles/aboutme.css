@@ -1,14 +1,14 @@
 /*
   About — Editorial Layout
-  Display: Cormorant Garant (high-contrast serif)
+  Display: Cormorant Garamond (high-contrast serif)
   Mono:    JetBrains Mono (global --font-mono)
   Body:    Outfit (light geometric sans)
 */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500&display=swap');
 
 /* ── Scoped tokens ───────────────────────────────────────────── */
 .about {
-  --f-display: 'Cormorant Garant', Georgia, 'Times New Roman', serif;
+  --f-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --f-body:    'Outfit', system-ui, sans-serif;
 }
 
@@ -39,7 +39,7 @@
 
 /* ── Masthead ─────────────────────────────────────────────────── */
 .masthead {
-  max-width: 940px;
+  max-width: var(--content-max);
   margin: 0 auto 56px;
 }
 
@@ -85,7 +85,7 @@
 
 /* ── Hero ─────────────────────────────────────────────────────── */
 .about-hero {
-  max-width: 940px;
+  max-width: var(--content-max);
   margin: 0 auto 52px;
 }
 
@@ -123,7 +123,7 @@
 
 /* ── Stats band ──────────────────────────────────────────────── */
 .stats-band {
-  max-width: 940px;
+  max-width: var(--content-max);
   margin: 0 auto 80px;
 }
 
@@ -180,7 +180,7 @@
 .about-grid {
   display: grid;
   grid-template-columns: 1.35fr 1fr;
-  max-width: 940px;
+  max-width: var(--content-max);
   margin: 0 auto;
   align-items: start;
 }
@@ -447,7 +447,7 @@
 
 /* ── CTA footer ──────────────────────────────────────────────── */
 .about-cta {
-  max-width: 940px;
+  max-width: var(--content-max);
   margin: 80px auto 0;
 }
 

@@ -121,9 +121,9 @@ export default function AboutMe() {
             </p>
           </section>
 
-          <section className="ab-section" data-num="04">
+          <section className="ab-section" data-num="02">
             <header className="ab-section-head">
-              <span className="ab-index">04</span>
+              <span className="ab-index">02</span>
               <h2 className="ab-heading">Goals</h2>
             </header>
             <p className="ab-text">
@@ -141,9 +141,9 @@ export default function AboutMe() {
             </p>
           </section>
 
-          <section className="ab-section" data-num="05">
+          <section className="ab-section" data-num="03">
             <header className="ab-section-head">
-              <span className="ab-index">05</span>
+              <span className="ab-index">03</span>
               <h2 className="ab-heading">Interests</h2>
             </header>
             <p className="ab-text">
@@ -163,9 +163,9 @@ export default function AboutMe() {
         {/* Right — structured data */}
         <motion.div className="about-col about-col--side" {...up(0.36)}>
 
-          <section className="ab-section" data-num="02">
+          <section className="ab-section" data-num="04">
             <header className="ab-section-head">
-              <span className="ab-index">02</span>
+              <span className="ab-index">04</span>
               <h2 className="ab-heading">Education</h2>
             </header>
 
@@ -208,9 +208,9 @@ export default function AboutMe() {
             </div>
           </section>
 
-          <section className="ab-section" data-num="03">
+          <section className="ab-section" data-num="05">
             <header className="ab-section-head">
-              <span className="ab-index">03</span>
+              <span className="ab-index">05</span>
               <h2 className="ab-heading">Skills</h2>
             </header>
             <div className="skill-groups">
