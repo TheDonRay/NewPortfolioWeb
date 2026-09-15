@@ -1,0 +1,52 @@
+/* 3-D scene layer — one persistent canvas behind every route */
+
+/* Route content always paints above the canvas. */
+.route {
+  position: relative;
+  z-index: 1;
+}
+
+.scene-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  /* The camera rig damps this inline every frame; 0 covers the first paint. */
+  opacity: 0;
+  will-change: opacity;
+}
+
+.scene-layer canvas {
+  display: block;
+}
+
+/* No WebGL: keep the mood, drop the machinery. */
+.scene-fallback {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 42% 34% at 68% 46%,
+      rgba(154, 178, 230, 0.09) 0%,
+      rgba(154, 178, 230, 0.03) 42%,
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 70% 40% at 68% 72%,
+      rgba(255, 255, 255, 0.025) 0%,
+      transparent 70%
+    );
+}
+
+@media (max-width: 900px) {
+  .scene-fallback {
+    background:
+      radial-gradient(
+        ellipse 58% 26% at 50% 62%,
+        rgba(154, 178, 230, 0.08) 0%,
+        transparent 70%
+      );
+  }
+}
