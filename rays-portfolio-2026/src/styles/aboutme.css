@@ -1,20 +1,21 @@
 /*
   About — Editorial Layout
-  Display: Cormorant Garant (high-contrast serif)
+  Display: Cormorant Garamond (high-contrast serif)
   Mono:    JetBrains Mono (global --font-mono)
   Body:    Outfit (light geometric sans)
 */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500&display=swap');
 
 /* ── Scoped tokens ───────────────────────────────────────────── */
 .about {
-  --f-display: 'Cormorant Garant', Georgia, 'Times New Roman', serif;
+  --f-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --f-body:    'Outfit', system-ui, sans-serif;
 }
 
 /* ── Page scaffold ───────────────────────────────────────────── */
 .about {
   min-height: 100vh;
+  min-height: 100dvh;
   padding: 128px 64px 88px;
   position: relative;
   overflow-x: hidden;
@@ -39,7 +40,7 @@
 
 /* ── Masthead ─────────────────────────────────────────────────── */
 .masthead {
-  max-width: 940px;
+  max-width: var(--content-max);
   margin: 0 auto 56px;
 }
 
@@ -85,7 +86,7 @@
 
 /* ── Hero ─────────────────────────────────────────────────────── */
 .about-hero {
-  max-width: 940px;
+  max-width: var(--content-max);
   margin: 0 auto 52px;
 }
 
@@ -123,7 +124,7 @@
 
 /* ── Stats band ──────────────────────────────────────────────── */
 .stats-band {
-  max-width: 940px;
+  max-width: var(--content-max);
   margin: 0 auto 80px;
 }
 
@@ -180,7 +181,7 @@
 .about-grid {
   display: grid;
   grid-template-columns: 1.35fr 1fr;
-  max-width: 940px;
+  max-width: var(--content-max);
   margin: 0 auto;
   align-items: start;
 }
@@ -447,7 +448,7 @@
 
 /* ── CTA footer ──────────────────────────────────────────────── */
 .about-cta {
-  max-width: 940px;
+  max-width: var(--content-max);
   margin: 80px auto 0;
 }
 
@@ -564,5 +565,32 @@
   .cta-row {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .cta-btn {
+    /* Comfortable thumb target — 13px padding alone lands under 40px. */
+    min-height: 46px;
+  }
+}
+
+@media (max-width: 860px) {
+  .cta-row {
+    flex-wrap: wrap;
+  }
+}
+
+@media (hover: none) {
+  .cta-btn--fill:hover {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  .cta-btn--ghost:hover {
+    color: rgba(255, 255, 255, 0.38);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .cta-btn:active {
+    opacity: 0.82;
   }
 }

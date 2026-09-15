@@ -1,6 +1,7 @@
-import { motion, animate } from "framer-motion";
+import { motion, animate, useReducedMotion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useRef, useEffect } from "react";
+import { prefetchRoute } from "../lib/routes.js";
 import "../styles/aboutme.css";
 
 const skillCategories = [
@@ -19,9 +20,14 @@ const stats = [
 
 function Counter({ to, suffix = "" }) {
   const nodeRef = useRef(null);
+  const reduced = useReducedMotion();
   useEffect(() => {
     const node = nodeRef.current;
     if (!node) return;
+    if (reduced) {
+      node.textContent = to + suffix;
+      return;
+    }
     const from = to > 100 ? to - 8 : 0;
     const ctrl = animate(from, to, {
       duration: 1.8,
@@ -29,7 +35,7 @@ function Counter({ to, suffix = "" }) {
       onUpdate: (v) => { node.textContent = Math.round(v) + suffix; },
     });
     return ctrl.stop;
-  }, [to, suffix]);
+  }, [to, suffix, reduced]);
   return <span ref={nodeRef}>{to > 100 ? to - 8 : 0}{suffix}</span>;
 }
 
@@ -121,9 +127,9 @@ export default function AboutMe() {
             </p>
           </section>
 
-          <section className="ab-section" data-num="04">
+          <section className="ab-section" data-num="02">
             <header className="ab-section-head">
-              <span className="ab-index">04</span>
+              <span className="ab-index">02</span>
               <h2 className="ab-heading">Goals</h2>
             </header>
             <p className="ab-text">
@@ -141,9 +147,9 @@ export default function AboutMe() {
             </p>
           </section>
 
-          <section className="ab-section" data-num="05">
+          <section className="ab-section" data-num="03">
             <header className="ab-section-head">
-              <span className="ab-index">05</span>
+              <span className="ab-index">03</span>
               <h2 className="ab-heading">Interests</h2>
             </header>
             <p className="ab-text">
@@ -163,9 +169,9 @@ export default function AboutMe() {
         {/* Right — structured data */}
         <motion.div className="about-col about-col--side" {...up(0.36)}>
 
-          <section className="ab-section" data-num="02">
+          <section className="ab-section" data-num="04">
             <header className="ab-section-head">
-              <span className="ab-index">02</span>
+              <span className="ab-index">04</span>
               <h2 className="ab-heading">Education</h2>
             </header>
 
@@ -208,9 +214,9 @@ export default function AboutMe() {
             </div>
           </section>
 
-          <section className="ab-section" data-num="03">
+          <section className="ab-section" data-num="05">
             <header className="ab-section-head">
-              <span className="ab-index">03</span>
+              <span className="ab-index">05</span>
               <h2 className="ab-heading">Skills</h2>
             </header>
             <div className="skill-groups">
@@ -241,10 +247,23 @@ export default function AboutMe() {
       <motion.div className="about-cta" {...up(0.52)}>
         <div className="cta-rule" />
         <div className="cta-row">
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="cta-btn cta-btn--fill">
+          <button
+            className="cta-btn cta-btn--fill"
+            onClick={() => navigate("/BookCall")}
+            onMouseEnter={() => prefetchRoute("/BookCall")}
+            onTouchStart={() => prefetchRoute("/BookCall")}
+          >
+            Book a Call
+          </button>
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="cta-btn cta-btn--ghost">
             View Resume
           </a>
-          <button className="cta-btn cta-btn--ghost" onClick={() => navigate("/ContactMe")}>
+          <button
+            className="cta-btn cta-btn--ghost"
+            onClick={() => navigate("/ContactMe")}
+            onMouseEnter={() => prefetchRoute("/ContactMe")}
+            onTouchStart={() => prefetchRoute("/ContactMe")}
+          >
             Contact Me
           </button>
         </div>
