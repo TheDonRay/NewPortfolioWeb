@@ -4,6 +4,7 @@
 
 .home {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,9 +114,17 @@
 /* Buttons */
 .home-buttons {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--space-3);
   justify-content: flex-start;
   margin-bottom: var(--space-10);
+}
+
+/* On desktop the two secondaries sit inline with the primary; on phones the
+   wrapper turns into a real row so they pair up under it instead of stacking
+   into a three-button tower. */
+.home-buttons-sub {
+  display: contents;
 }
 
 .btn {
@@ -293,41 +302,90 @@
 }
 
 @media (max-width: 600px) {
-  .home {
-    padding: 96px var(--space-4) var(--space-12);
-  }
-
-  .home-bio {
-    font-size: var(--text-sm);
-    margin-bottom: var(--space-8);
-  }
-
-  .home-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .btn {
+  .home { padding: 80px var(--space-4) var(--space-12); }
+  .home-content { max-width: 100%; }
+  .home-bio { font-size: var(--text-sm); margin-bottom: var(--space-8); }
+  .home-buttons { flex-direction: column; align-items: center; }
+  .home-buttons > .btn { width: 100%; max-width: 320px; }
+  .home-buttons-sub {
+    display: flex;
+    gap: var(--space-3);
     width: 100%;
-    max-width: 260px;
-    justify-content: center;
+    max-width: 320px;
   }
-
-  .home-stage {
-    min-height: 40vh;
-  }
-
-  .home-scroll-line {
-    display: none;
-  }
-
-  .home-grid {
-    opacity: 0.5;
-  }
+  .home-buttons-sub .btn { flex: 1 1 0; min-width: 0; padding-inline: var(--space-3); }
+  .btn { justify-content: center; min-height: 46px; }
+  .home-stage { min-height: 40vh; }
+  .home-scroll-line { display: none; }
+  .home-grid { opacity: 0.5; }
+  .shape-square { display: none; }
 }
 
 @media (max-width: 400px) {
   .home-links {
     gap: var(--space-4);
+  }
+}
+
+/* ── Touch & small-screen GPU budget ────────────────────────────
+   The hero leans on blur, drop-shadow and two promoted layers. That's fine
+   on a desktop GPU and expensive on a phone, so trim the costly parts where
+   they buy the least: hover states that can't fire, layers that never move,
+   and shadow radii nobody can resolve at that size. */
+
+@media (hover: none) {
+  /* Neither layer is animated without a fine pointer, so don't promote them. */
+  .home-spotlight,
+  .home-content {
+    will-change: auto;
+  }
+
+  /* The social links are 18px of text. Grow the *hit area* with an overlay
+     instead of padding, so the underline stays welded to the baseline. */
+  .home-link::before {
+    content: '';
+    position: absolute;
+    left: calc(var(--space-2) * -1);
+    right: calc(var(--space-2) * -1);
+    top: 50%;
+    translate: 0 -50%;
+    height: 44px;
+  }
+
+  .btn-primary:hover,
+  .btn-secondary:hover {
+    transform: none;
+  }
+
+  .btn-primary:active,
+  .btn-secondary:active {
+    transform: scale(0.985);
+  }
+}
+
+@media (max-width: 600px) {
+  .btn-secondary {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .lp {
+    /* A 90px shadow blur over the whole laptop subtree is the single most
+       expensive raster op on the page at phone width. */
+    filter: drop-shadow(0 22px 34px rgba(0, 0, 0, 0.85));
+  }
+
+  .home-badge {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-spotlight,
+  .home-content,
+  .lp {
+    will-change: auto;
   }
 }

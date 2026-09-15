@@ -8,7 +8,8 @@
   z-index: var(--z-nav);
   padding: var(--space-5) var(--space-6);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   transition: padding var(--transition-base);
   pointer-events: none;
 }
@@ -23,7 +24,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-3) var(--space-5);
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4) var(--space-3) var(--space-5);
   background: rgba(4, 4, 4, 0.75);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
@@ -31,7 +33,8 @@
   border-radius: var(--radius-full);
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.55),
               inset 0 1px 0 rgba(255, 255, 255, 0.07);
-  transition: var(--transition-base);
+  /* Animate only the cheap properties; `all` here repaints the blur layer. */
+  transition: background-color var(--transition-base), box-shadow var(--transition-base);
   pointer-events: all;
 }
 
@@ -50,7 +53,7 @@
   height: 34px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: var(--radius-sm);
-  transition: var(--transition-base);
+  transition: background-color var(--transition-base), border-color var(--transition-base);
   flex-shrink: 0;
 }
 
@@ -60,7 +63,7 @@
   font-weight: 600;
   color: var(--color-text);
   letter-spacing: 0.06em;
-  transition: var(--transition-base);
+  transition: color var(--transition-base);
   line-height: 1;
 }
 
@@ -82,6 +85,8 @@
 
 .nav-link {
   position: relative;
+  display: inline-flex;
+  align-items: center;
   padding: var(--space-2) var(--space-4);
   font-size: var(--text-sm);
   font-weight: 500;
@@ -89,12 +94,10 @@
   border-radius: var(--radius-full);
   transition: color var(--transition-base);
   letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
-.nav-link:hover {
-  color: var(--color-text);
-}
-
+.nav-link:hover,
 .nav-link.active {
   color: var(--color-text);
 }
@@ -108,8 +111,19 @@
   z-index: -1;
 }
 
-/* Resume */
-.nav-resume {
+/* Right cluster */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+/* Book-a-call CTA — the one filled action in the bar */
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
   font-weight: 600;
@@ -119,59 +133,194 @@
   border-radius: var(--radius-full);
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  transition: var(--transition-base);
+  transition: opacity var(--transition-base);
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
+  white-space: nowrap;
 }
 
-.nav-resume::after {
+.nav-cta::after {
   content: '';
   position: absolute;
   top: 0;
   left: -100%;
   width: 60%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.08), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
   transform: skewX(-18deg);
   transition: left 0.55s ease;
 }
 
-.nav-resume:hover {
+.nav-cta:hover {
   opacity: 0.92;
 }
 
-.nav-resume:hover::after {
+.nav-cta:hover::after {
   left: 150%;
 }
 
-/* Mobile */
+.nav-cta.active {
+  background: transparent;
+  color: var(--color-text);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.32);
+}
+
+.nav-cta-short {
+  display: none;
+}
+
+/* Mobile sheet toggle */
+.nav-burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--color-text);
+  transition: background-color var(--transition-base), border-color var(--transition-base);
+  flex-shrink: 0;
+}
+
+.nav-burger:hover {
+  background: var(--color-bg-hover);
+  border-color: var(--color-border-hover);
+}
+
+/* Mobile sheet */
+.nav-sheet {
+  display: none;
+  width: 100%;
+  max-width: 880px;
+  margin-top: var(--space-2);
+  padding: var(--space-2);
+  flex-direction: column;
+  gap: 2px;
+  background: rgba(4, 4, 4, 0.94);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.72);
+  pointer-events: all;
+  transform-origin: top center;
+}
+
+.nav-sheet-link {
+  display: flex;
+  align-items: center;
+  min-height: 46px;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-align: left;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.nav-sheet-link.active {
+  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.nav-sheet-link:active {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav :focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 2px;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+
+/* Four links plus a CTA stop fitting well before phone width. */
+@media (max-width: 780px) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav-burger,
+  .nav-sheet {
+    display: flex;
+  }
+
+  .nav-inner {
+    justify-content: space-between;
+  }
+}
+
 @media (max-width: 600px) {
   .nav {
     padding: var(--space-3) var(--space-4);
   }
 
-  .nav-inner {
+  .nav--scrolled {
     padding: var(--space-2) var(--space-4);
   }
 
-  .nav-link {
-    padding: var(--space-2) var(--space-3);
-    font-size: var(--text-xs);
+  .nav-inner {
+    padding: var(--space-2) var(--space-2) var(--space-2) var(--space-3);
   }
 
+  /* Thumb targets: the bar's controls stay on one comfortable 38px row. */
   .nav-logo {
-    width: 28px;
-    height: 28px;
+    width: 38px;
+    height: 38px;
   }
 
   .nav-logo-text {
     font-size: 0.65rem;
   }
 
-  .nav-resume {
+  .nav-cta {
     font-size: 0.6rem;
-    padding: var(--space-2) var(--space-3);
+    min-height: 38px;
+    padding: 0 var(--space-4);
     letter-spacing: 0.05em;
+  }
+
+  .nav-burger {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (max-width: 380px) {
+  .nav-cta-full {
+    display: none;
+  }
+
+  .nav-cta-short {
+    display: inline;
+  }
+}
+
+/* Blur is the most expensive thing in this bar; scale it back where the
+   GPU budget is smallest rather than dropping the glass look entirely. */
+@media (max-width: 600px) {
+  .nav-inner,
+  .nav-sheet {
+    backdrop-filter: blur(14px) saturate(150%);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+  }
+}
+
+@media (hover: none) {
+  .nav-link:hover,
+  .nav-burger:hover {
+    background: none;
+  }
+
+  .nav-logo:hover {
+    background: none;
+    border-color: rgba(255, 255, 255, 0.14);
+  }
+
+  .nav-logo:hover .nav-logo-text {
+    color: var(--color-text);
   }
 }

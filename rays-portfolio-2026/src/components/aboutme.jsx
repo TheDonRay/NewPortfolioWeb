@@ -1,6 +1,7 @@
-import { motion, animate } from "framer-motion";
+import { motion, animate, useReducedMotion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useRef, useEffect } from "react";
+import { prefetchRoute } from "../lib/routes.js";
 import "../styles/aboutme.css";
 
 const skillCategories = [
@@ -19,9 +20,14 @@ const stats = [
 
 function Counter({ to, suffix = "" }) {
   const nodeRef = useRef(null);
+  const reduced = useReducedMotion();
   useEffect(() => {
     const node = nodeRef.current;
     if (!node) return;
+    if (reduced) {
+      node.textContent = to + suffix;
+      return;
+    }
     const from = to > 100 ? to - 8 : 0;
     const ctrl = animate(from, to, {
       duration: 1.8,
@@ -29,7 +35,7 @@ function Counter({ to, suffix = "" }) {
       onUpdate: (v) => { node.textContent = Math.round(v) + suffix; },
     });
     return ctrl.stop;
-  }, [to, suffix]);
+  }, [to, suffix, reduced]);
   return <span ref={nodeRef}>{to > 100 ? to - 8 : 0}{suffix}</span>;
 }
 
@@ -241,10 +247,23 @@ export default function AboutMe() {
       <motion.div className="about-cta" {...up(0.52)}>
         <div className="cta-rule" />
         <div className="cta-row">
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="cta-btn cta-btn--fill">
+          <button
+            className="cta-btn cta-btn--fill"
+            onClick={() => navigate("/BookCall")}
+            onMouseEnter={() => prefetchRoute("/BookCall")}
+            onTouchStart={() => prefetchRoute("/BookCall")}
+          >
+            Book a Call
+          </button>
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="cta-btn cta-btn--ghost">
             View Resume
           </a>
-          <button className="cta-btn cta-btn--ghost" onClick={() => navigate("/ContactMe")}>
+          <button
+            className="cta-btn cta-btn--ghost"
+            onClick={() => navigate("/ContactMe")}
+            onMouseEnter={() => prefetchRoute("/ContactMe")}
+            onTouchStart={() => prefetchRoute("/ContactMe")}
+          >
             Contact Me
           </button>
         </div>
