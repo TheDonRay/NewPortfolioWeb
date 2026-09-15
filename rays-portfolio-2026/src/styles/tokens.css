@@ -1,0 +1,48 @@
+/* ─────────────────────────────────────────────────────────────
+   Late Shift — design tokens
+   A warm pool of light in a cold white room.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  /* Surface */
+  --paper: #ffffff;
+  --mist: #f2f4f7; /* cool well, deliberately not a warm cream */
+  --edge: #e3e7ec;
+  --edge-soft: #eef1f5;
+
+  /* Ink — blue-black, the same value the 3D scene casts as shadow */
+  --ink: #151b24;
+  --slate: #5c6875;
+  --slate-soft: #8b95a1;
+
+  /* The single accent: light. Lamp, screen, links, focus. */
+  --amber: #ff6a1a;
+  --amber-deep: #d14e08;
+  --amber-wash: rgba(255, 106, 26, 0.1);
+
+  /* Type */
+  --display: "Bricolage Grotesque", "Archivo", system-ui, sans-serif;
+  --text: "Archivo", system-ui, -apple-system, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Scale — 1.25 minor third off 17px */
+  --t-xs: 0.78rem;
+  --t-sm: 0.875rem;
+  --t-body: 1.0625rem;
+  --t-lead: 1.25rem;
+  --t-h3: 1.5rem;
+  --t-h2: clamp(2rem, 4.5vw, 3.25rem);
+  --t-h1: clamp(3rem, 12vw, 9.5rem);
+
+  /* Rhythm */
+  --gut: clamp(1.25rem, 5vw, 4.5rem);
+  --stack: clamp(4.5rem, 11vh, 9rem);
+  --measure: 63ch;
+  --rail: 1080px;
+
+  /* Depth — one soft, one lifted. Not the same shadow on everything. */
+  --lift: 0 1px 2px rgba(21, 27, 36, 0.04), 0 8px 24px rgba(21, 27, 36, 0.06);
+  --lift-hi: 0 2px 4px rgba(21, 27, 36, 0.05), 0 18px 44px rgba(21, 27, 36, 0.1);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}

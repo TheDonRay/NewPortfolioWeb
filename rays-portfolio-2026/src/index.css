@@ -1,7 +1,8 @@
-/* Global — Obsidian Studio */
-@import "./styles/variables.css";
+@import "./styles/tokens.css";
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -9,17 +10,34 @@
 
 html {
   scroll-behavior: smooth;
+  /* sticky nav clearance for in-page anchors */
+  scroll-padding-top: 6rem;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
-  font-family: var(--font-sans);
-  background: var(--color-bg);
-  color: var(--color-text);
+  font-family: var(--text);
+  font-size: var(--t-body);
+  line-height: 1.65;
+  background: var(--paper);
+  color: var(--ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh;
   overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 a {
@@ -28,24 +46,108 @@ a {
 }
 
 button {
-  font-family: inherit;
+  font: inherit;
+  color: inherit;
   cursor: pointer;
   border: none;
   background: none;
 }
 
-img {
-  max-width: 100%;
+img,
+canvas {
   display: block;
+  max-width: 100%;
 }
 
 ::selection {
-  background: rgba(255, 255, 255, 0.14);
+  background: var(--amber);
   color: #fff;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar        { width: 4px; }
-::-webkit-scrollbar-track  { background: transparent; }
-::-webkit-scrollbar-thumb  { background: rgba(255,255,255,0.1); border-radius: 9999px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.18); }
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ── Shared layout primitives ───────────────────────────────── */
+
+.rail {
+  width: 100%;
+  max-width: var(--rail);
+  margin-inline: auto;
+  padding-inline: var(--gut);
+}
+
+.section {
+  padding-block: var(--stack);
+}
+
+/* A section heading sits on a hairline with its own counter-free label.
+   The rule carries the structure so the type doesn't need an eyebrow. */
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding-bottom: 1.75rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  border-bottom: 1px solid var(--edge);
+}
+
+.section-head h2 {
+  font-size: var(--t-h2);
+  flex: none;
+}
+
+.section-head .aside {
+  margin-left: auto;
+  font-size: var(--t-sm);
+  color: var(--slate-soft);
+  text-align: right;
+  flex: 1;
+  min-width: 0;
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 999;
+  background: var(--ink);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 8px 0;
+}
+.skip:focus {
+  left: 0;
+}
+
+/* Scrollbar — thin, ink, no chrome */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--paper);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--edge);
+  border: 3px solid var(--paper);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--slate-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
