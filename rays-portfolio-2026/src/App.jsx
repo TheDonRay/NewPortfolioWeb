@@ -1,41 +1,44 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion"; 
-import { Analytics } from "@vercel/analytics/react"; 
-import HomePage from "./components/homepage.jsx";
-import AboutMe from "./components/aboutme.jsx";
-import ContactMe from "./components/contactme.jsx";
-import Navigation from "./components/Navigation.jsx";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
+import Nav from "./components/Nav.jsx";
+import Hero from "./sections/Hero.jsx";
+import About from "./sections/About.jsx";
+import Skills from "./sections/Skills.jsx";
+import Experience from "./sections/Experience.jsx";
+import Projects from "./sections/Projects.jsx";
+import Contact from "./sections/Contact.jsx";
+import "./styles/site.css";
 
-function AnimatedRoutes() {
-  const location = useLocation();
-
+function Page() {
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={location.pathname}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.2 }}
-      >
-        <Routes location={location}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/AboutMe" element={<AboutMe />} />
-          <Route path="/ContactMe" element={<ContactMe />} />
-        </Routes>
-      </motion.div>
-    </AnimatePresence>
+    <>
+      <a className="skip" href="#about">
+        Skip to content
+      </a>
+      <Nav />
+      <Hero />
+      <main id="content">
+        <About />
+        <Skills />
+        <Experience />
+        <Projects />
+        <Contact />
+      </main>
+    </>
   );
 }
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
-      <Navigation />
-      <AnimatedRoutes />
+      <Routes>
+        <Route path="/" element={<Page />} />
+        {/* The old multi-page routes are now sections; keep the links alive. */}
+        <Route path="/AboutMe" element={<Navigate to="/#about" replace />} />
+        <Route path="/ContactMe" element={<Navigate to="/#contact" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
       <Analytics />
     </BrowserRouter>
   );
 }
-
-export default App;
