@@ -50,7 +50,7 @@ export default function ContactMe() {
             <motion.a
               key={label}
               href={href}
-              target="_blank"
+              target={href.startsWith("mailto:") ? undefined : "_blank"}
               rel="noopener noreferrer"
               className="contact-item"
               initial={{ opacity: 0, x: -12 }}

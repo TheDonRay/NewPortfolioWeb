@@ -19,7 +19,7 @@
 
 .nav-inner {
   width: 100%;
-  max-width: 880px;
+  max-width: var(--content-max);
   display: flex;
   align-items: center;
   justify-content: space-between;

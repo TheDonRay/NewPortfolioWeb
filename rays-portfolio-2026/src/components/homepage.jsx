@@ -169,8 +169,7 @@ export default function HomePage() {
         </motion.div>
 
         <motion.p className="home-bio" {...fadeUp(3)}>
-        Building is my escape. Im Rayat, CS + Math @ Hunter College.
-
+          Building is my escape. I’m Rayat, CS + Math @ Hunter College.
         </motion.p>
         <motion.div className="home-buttons" {...fadeUp(4)}>
           <button className="btn btn-primary" onClick={() => navigate("/AboutMe")}>
