@@ -26,4 +26,16 @@ export default defineConfig([
       "no-unused-vars": ["error", { varsIgnorePattern: "^[A-Z_]" }],
     },
   },
+  {
+    /* The 3-D scene drives three.js objects imperatively from inside useFrame:
+       mutate the object every frame, never re-render. That is the intended
+       react-three-fiber pattern, and the immutability/ref rules cannot tell it
+       apart from mutating React state. */
+    files: ["src/three/**/*.{js,jsx}"],
+    rules: {
+      "react-hooks/immutability": "off",
+      "react-hooks/refs": "off",
+      "react-hooks/set-state-in-effect": "off",
+    },
+  },
 ]);
