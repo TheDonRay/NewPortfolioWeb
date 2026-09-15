@@ -138,28 +138,66 @@ function Student() {
         rotation={[0.26, 0, 0]}
         roughness={0.82}
       />
-      {/* hair cap — sits high and back so the lit face stays clear */}
-      <Box
-        size={[0.42, 0.36, 0.4]}
-        radius={0.155}
-        color={PAL.hair}
-        position={[0, 1.5, -0.63]}
-        rotation={[0.26, 0, 0]}
-        roughness={0.95}
-      />
-
-      {/* glasses, catching the screen light */}
-      <group position={[0, 1.42, -0.38]} rotation={[0.26, 0, 0]}>
-        {[-0.076, 0.076].map((x) => (
-          <mesh key={x} position={[x, 0, 0]}>
-            <torusGeometry args={[0.046, 0.009, 8, 20]} />
-            <meshStandardMaterial color={PAL.ink} roughness={0.35} metalness={0.3} />
-          </mesh>
+      {/* Hair: crown, a fringe above the brow, and sides past the ears.
+          The group is pivoted on the head's own centre — rotating it about
+          the world origin swings the fringe down over the face. */}
+      <group position={[0, 1.44, -0.55]} rotation={[0.26, 0, 0]}>
+        <Box
+          size={[0.43, 0.34, 0.42]}
+          radius={0.16}
+          color={PAL.hair}
+          position={[0, 0.09, -0.04]}
+          roughness={0.95}
+        />
+        {/* fringe, stopping well clear of the glasses */}
+        <Box
+          size={[0.4, 0.13, 0.22]}
+          radius={0.055}
+          color={PAL.hair}
+          position={[0, 0.15, 0.1]}
+          roughness={0.95}
+        />
+        {/* sides, cut short at ear level rather than down to the jaw */}
+        {[-0.177, 0.177].map((x) => (
+          <Box
+            key={x}
+            size={[0.068, 0.16, 0.3]}
+            radius={0.032}
+            color={PAL.hair}
+            position={[x, 0.06, -0.04]}
+            roughness={0.95}
+          />
         ))}
+      </group>
+
+      {/* full-rim glasses: lenses, bridge, and temples back to the ears */}
+      <group position={[0, 1.42, -0.38]} rotation={[0.26, 0, 0]}>
+        {[-0.082, 0.082].map((x) => (
+          <group key={x} position={[x, 0, 0]}>
+            <mesh>
+              <torusGeometry args={[0.055, 0.011, 10, 24]} />
+              <meshStandardMaterial color={PAL.ink} roughness={0.3} metalness={0.35} />
+            </mesh>
+            <mesh position={[0, 0, -0.002]}>
+              <circleGeometry args={[0.055, 24]} />
+              <meshStandardMaterial
+                color="#cfe3f2"
+                roughness={0.08}
+                metalness={0.1}
+                transparent
+                opacity={0.45}
+              />
+            </mesh>
+          </group>
+        ))}
+        {/* bridge */}
         <mesh rotation={[0, 0, Math.PI / 2]}>
-          <capsuleGeometry args={[0.007, 0.042, 4, 8]} />
-          <meshStandardMaterial color={PAL.ink} roughness={0.35} metalness={0.3} />
+          <capsuleGeometry args={[0.008, 0.038, 4, 10]} />
+          <meshStandardMaterial color={PAL.ink} roughness={0.3} metalness={0.35} />
         </mesh>
+        {/* temples, angled back along the sides of the head */}
+        <Limb from={[-0.135, 0.012, -0.004]} to={[-0.185, 0.0, -0.17]} radius={0.009} color={PAL.ink} roughness={0.3} />
+        <Limb from={[0.135, 0.012, -0.004]} to={[0.185, 0.0, -0.17]} radius={0.009} color={PAL.ink} roughness={0.3} />
       </group>
 
       {/* arms: shoulder → elbow → wrist, reaching the keyboard */}

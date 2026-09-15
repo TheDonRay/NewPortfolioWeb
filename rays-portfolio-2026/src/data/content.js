@@ -16,7 +16,7 @@ export const profile = {
   linkedinHandle: "rayatchowdhury2005",
   resume: "/resume.pdf",
   intro:
-    "I'm a computer science junior at Hunter College. I build backend services — APIs, payment flows, and the validation layers that keep them honest.",
+    "I'm a computer science senior at Hunter College. I build backend services — APIs, payment flows, and the validation layers that keep them honest.",
 };
 
 export const education = {
@@ -25,7 +25,7 @@ export const education = {
   degree: "B.A. Computer Science",
   minor: "Mathematics",
   graduation: "May 2027",
-  standing: "Junior",
+  standing: "Senior",
   coursework: [
     "Data Structures & Algorithms",
     "Object-Oriented Programming I & II",
@@ -38,7 +38,7 @@ export const about = [
     id: "who",
     heading: "Who I am",
     body: [
-      "I'm a rising senior at Hunter College pursuing a B.A. in Computer Science with a minor in Mathematics. I'm an aspiring backend developer with a passion for building scalable applications using Node.js and Express.js. I like to think of myself as a “bootleg” Tony Stark — minus the billion-dollar lab, but with the same drive to keep building, learning, and turning ideas into reality.",
+      "I'm a senior at Hunter College pursuing a B.A. in Computer Science with a minor in Mathematics. I'm an aspiring backend developer with a passion for building scalable applications using Node.js and Express.js. I like to think of myself as a “bootleg” Tony Stark — minus the billion-dollar lab, but with the same drive to keep building, learning, and turning ideas into reality.",
       "Building wasn't something I originally planned on doing. It started as a way to solve my own problems, but along the way I realized the same solutions could help other people too. Since then, creating has become more than just writing code — it's how I learn, challenge myself, and make an impact. Whether the idea is simple, ambitious, or a little weird, if it has the potential to improve someone's everyday life, it's worth building.",
     ],
   },
