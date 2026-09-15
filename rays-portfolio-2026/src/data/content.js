@@ -54,7 +54,7 @@ export const about = [
     id: "interests",
     heading: "When I'm not coding",
     body: [
-      "When Im not coding you can find me hanging out with my friends enjoying the night wether we are at Astoria blvd, or cruising the night away on Belt Parkaway. If im not there you can definetely find me at one of my favorite spots being Roosevelt Island",
+      "When I’m not coding, you can find me hanging out with my friends and enjoying the night, whether we’re cruising down Astoria Boulevard or taking a late night drive along the Belt Parkway. And if I’m not there, you can definitely find me at one of my favorite spots, Roosevelt Island, just enjoying the view and taking in the city.",
     ],
   },
 ];
