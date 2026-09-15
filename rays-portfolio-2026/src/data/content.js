@@ -16,7 +16,7 @@ export const profile = {
   linkedinHandle: "rayatchowdhury2005",
   resume: "/resume.pdf",
   intro:
-    "I'm a computer science senior at Hunter College. I build backend services — APIs, payment flows, and the validation layers that keep them honest.",
+    "Hey! My name is Rayat. I’m a Software Engineer who loves building REST APIs, learning System Design, and absolutely hates LeetCode!",
 };
 
 export const education = {
@@ -36,7 +36,7 @@ export const education = {
 export const about = [
   {
     id: "who",
-    heading: "Who I am",
+    heading: "Who Am I?",
     body: [
       "I'm a senior at Hunter College pursuing a B.A. in Computer Science with a minor in Mathematics. I'm an aspiring backend developer with a passion for building scalable applications using Node.js and Express.js. I like to think of myself as a “bootleg” Tony Stark — minus the billion-dollar lab, but with the same drive to keep building, learning, and turning ideas into reality.",
       "Building wasn't something I originally planned on doing. It started as a way to solve my own problems, but along the way I realized the same solutions could help other people too. Since then, creating has become more than just writing code — it's how I learn, challenge myself, and make an impact. Whether the idea is simple, ambitious, or a little weird, if it has the potential to improve someone's everyday life, it's worth building.",
@@ -54,8 +54,7 @@ export const about = [
     id: "interests",
     heading: "When I'm not coding",
     body: [
-      "You'll probably find me watching car repair videos on YouTube (shoutout to ChrisFix), reading documentation just because I enjoy learning, or out on late-night drives with my friends talking about cars and checking out each other's builds.",
-      "If you couldn't tell already, I'm a huge car enthusiast. To me, cars are more than just machines — they're something that brings people together, and that's one of the reasons I love them.",
+      "When Im not coding you can find me hanging out with my friends enjoying the night wether we are at Astoria blvd, or cruising the night away on Belt Parkaway. If im not there you can definetely find me at one of my favorite spots being Roosevelt Island",
     ],
   },
 ];
@@ -91,7 +90,8 @@ export const skills = [
       "Jira",
       "QMetry",
       "Railway",
-      "Vercel",
+      "Vercel", 
+      "CloudFlare"
     ],
   },
   {
@@ -110,7 +110,8 @@ export const skills = [
     items: [
       "MongoDB",
       "MySQL",
-      "GCP Cloud Run",
+      "GCP", 
+      "Cloud Run", 
       "Artifact Registry",
       "IAM",
     ],
