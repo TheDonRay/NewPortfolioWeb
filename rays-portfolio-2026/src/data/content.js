@@ -13,7 +13,7 @@ export const profile = {
   github: "https://github.com/TheDonRay",
   githubHandle: "TheDonRay",
   linkedin: "https://www.linkedin.com/in/rayatchowdhury2005/",
-  linkedinHandle: "My Linkedn!",
+  linkedinHandle: "rayatchowdhury2005",
   resume: "/resume.pdf",
   intro:
     "Hey! I’m Rayat, a Software Engineer passionate about building backend systems, designing REST APIs, and learning System Design. I’m also on a never-ending journey to tolerate LeetCode.",
