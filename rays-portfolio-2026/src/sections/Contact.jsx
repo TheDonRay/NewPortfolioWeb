@@ -4,7 +4,7 @@ import { profile } from "../data/content";
 const links = [
   { label: "LinkedIn", value: profile.linkedinHandle, href: profile.linkedin },
   { label: "GitHub", value: profile.githubHandle, href: profile.github },
-  { label: "Résumé", value: "PDF, one page", href: profile.resume },
+  { label: "Resume", value: "PDF, one page", href: profile.resume },
 ];
 
 export default function Contact() {
@@ -40,7 +40,7 @@ export default function Contact() {
             {profile.name} — {profile.location}
           </p>
           <a href={profile.resume} target="_blank" rel="noopener noreferrer">
-            Résumé
+            Resume
           </a>
         </footer>
       </div>

@@ -168,7 +168,7 @@ export const projects = [
       "Automated CI/CD using Cloud Build and commit-tagged Docker images, deploying to GCP Cloud Run on every push.",
       "Reduced invalid-input failures reaching the paid RentCast and OpenAI APIs by adding request-parameter validation and layered error handling across the analysis controller and external API service.",
     ],
-    href: "https://github.com/TheDonRay",
+    href: "https://github.com/TheDonRay/PropertyAnalyzer",
   },
   {
     name: "CheckPoint",
@@ -180,7 +180,7 @@ export const projects = [
       "Generated MongoDB seed data to test custom middleware across endpoint requests and query types, confirming API validation behaved as expected through Postman.",
       "Implemented GitHub Actions CI with Node 22 and npm caching, improving build consistency and efficiency.",
     ],
-    href: "https://github.com/TheDonRay",
+    href: "https://github.com/TheDonRay/CheckPoint",
   },
 ];
 

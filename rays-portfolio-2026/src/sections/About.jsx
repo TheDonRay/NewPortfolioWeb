@@ -34,6 +34,7 @@ export default function About() {
               </div>
               <div>
                 <dt>Minor</dt>
+                <dt>Minor</dt>
                 <dd>{education.minor}</dd>
               </div>
               <div>
