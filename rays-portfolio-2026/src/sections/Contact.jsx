@@ -2,9 +2,9 @@ import { profile } from "../data/content";
 
 // Email is already the headline link below, so it isn't repeated here.
 const links = [
-  { label: "LinkedIn", value: profile.linkedinHandle, href: profile.linkedin },
+  { label: "LinkedIn", value: "My Linkedn!", href: profile.linkedin },
   { label: "GitHub", value: profile.githubHandle, href: profile.github },
-  { label: "Resume", value: "PDF, one page", href: profile.resume },
+  { label: "Resume", value: "My Resume", href: profile.resume },
 ];
 
 export default function Contact() {
