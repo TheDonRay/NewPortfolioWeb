@@ -498,7 +498,15 @@ function Scene({ reduced }) {
   );
 }
 
-export default function DeskScene() {
+/* Mounts only once everything inside the scene's Suspense has resolved. */
+function Ready({ onReady }) {
+  useEffect(() => {
+    onReady?.();
+  }, [onReady]);
+  return null;
+}
+
+export default function DeskScene({ onReady }) {
   const [failed, setFailed] = useState(false);
   const reduced =
     typeof window !== "undefined" &&
@@ -513,10 +521,14 @@ export default function DeskScene() {
       dpr={[1, 2]}
       gl={{ antialias: true, alpha: true, preserveDrawingBuffer: false }}
       camera={{ position: [3.05, 1.95, 3.2], fov: 34 }}
-      onError={() => setFailed(true)}
+      onError={() => {
+        setFailed(true);
+        onReady?.();
+      }}
     >
       <Suspense fallback={null}>
         <Scene reduced={reduced} />
+        <Ready onReady={onReady} />
       </Suspense>
     </Canvas>
   );
