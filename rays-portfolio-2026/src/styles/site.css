@@ -110,24 +110,15 @@
   position: relative;
 }
 
+/* Name, then render, in normal flow on the shared rail, so the canvas
+   lines up with the heading and the intro and never layers over the type. */
 .hero-scene {
-  position: relative;
-  overflow: hidden;
+  padding-top: clamp(1rem, 6vh, 4.5rem);
 }
 
-/* Set behind the render on purpose: the desk crosses the tail of the
-   name. Left-aligned on the same rail as every other section, so the
-   render sits in the space the type leaves on the right. */
 .hero-name {
-  position: absolute;
-  inset-inline: 0;
-  top: clamp(1rem, 6vh, 4.5rem);
-  z-index: 1;
   display: grid;
   justify-items: start;
-  max-width: var(--rail);
-  margin-inline: auto;
-  padding-inline: var(--gut);
   font-size: var(--t-h1);
   font-weight: 800;
   letter-spacing: -0.055em;
@@ -141,12 +132,19 @@
 }
 
 /* In flow, so the block reserves its own height instead of floating
-   over whatever comes next. */
+   over whatever comes next. ~32px under the name on phones, ~56px wide.
+   pointer-events stay off: parallax is read on the window, and touch
+   scrolling passes straight through the canvas. */
 .hero-stage {
   position: relative;
-  z-index: 2;
+  margin-top: clamp(2rem, 1rem + 3vw, 3.5rem);
   height: clamp(440px, calc(100svh - 12rem), 860px);
   pointer-events: none;
+}
+/* R3F inlines pointer-events: auto on its wrapper, which would undo the
+   rule above and let the canvas take touches. */
+.hero-stage > div {
+  pointer-events: none !important;
 }
 .hero-stage > canvas,
 .scene-canvas {
@@ -258,19 +256,16 @@
   .hero {
     padding-top: 1rem;
   }
-  .hero-name {
-    position: static;
-    justify-items: start;
-    text-align: left;
-    padding-inline: var(--gut);
-    max-width: var(--rail);
-    margin-inline: auto;
+  .hero-scene {
+    padding-top: 0;
   }
+  /* Never wider than tall: the stacked camera fit then frames by width,
+     which leaves room for the front desk leg and its shadow. Wider than
+     that and it frames by height and crops them at the bottom edge. */
   .hero-stage {
-    height: 46svh;
-    min-height: 260px;
-    max-height: 380px;
-    margin-top: -0.5rem;
+    height: clamp(260px, 46svh, 380px);
+    max-width: clamp(260px, 46svh, 380px);
+    margin-inline: auto;
   }
 }
 
