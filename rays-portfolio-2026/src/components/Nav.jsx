@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { profile, sections } from "../data/content";
 
 const items = sections.filter((s) => s.id !== "top");
@@ -52,6 +52,20 @@ export default function Nav() {
     };
   }, []);
 
+  // On phones the link row scrolls sideways; keep the lit item in view.
+  // Scrolls the list only — scrollIntoView would also nudge the page.
+  const listRef = useRef(null);
+  useEffect(() => {
+    const list = listRef.current;
+    const link = list?.querySelector(".is-active");
+    if (!list || !link || list.scrollWidth <= list.clientWidth) return;
+    const l = link.getBoundingClientRect();
+    const box = list.getBoundingClientRect();
+    const left =
+      list.scrollLeft + l.left - box.left - (list.clientWidth - l.width) / 2;
+    list.scrollTo({ left, behavior: "smooth" });
+  }, [active]);
+
   return (
     <nav className={`nav${lifted ? " is-lifted" : ""}`} aria-label="Sections">
       <div className="nav-inner">
@@ -60,7 +74,7 @@ export default function Nav() {
           {profile.last[0]}
         </a>
 
-        <ul className="nav-list">
+        <ul className="nav-list" ref={listRef}>
           {items.map(({ id, label }) => (
             <li key={id}>
               <a

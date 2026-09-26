@@ -14,6 +14,12 @@ html {
   scroll-padding-top: 6rem;
   -webkit-text-size-adjust: 100%;
 }
+@media (max-width: 620px) {
+  html {
+    /* the nav gains a second row of links on phones */
+    scroll-padding-top: 7.5rem;
+  }
+}
 
 body {
   font-family: var(--text);
@@ -106,6 +112,20 @@ canvas {
   text-align: right;
   flex: 1;
   min-width: 0;
+}
+
+/* Narrow screens: the aside drops under the heading instead of being
+   squeezed into a ragged right-aligned column beside it. */
+@media (max-width: 520px) {
+  .section-head {
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+  }
+  .section-head .aside {
+    flex-basis: 100%;
+    margin-left: 0;
+    text-align: left;
+  }
 }
 
 .skip {
