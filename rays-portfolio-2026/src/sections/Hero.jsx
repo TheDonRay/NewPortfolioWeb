@@ -46,7 +46,7 @@ export default function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Read my résumé
+                Read my resume
               </a>
             </div>
           </div>
