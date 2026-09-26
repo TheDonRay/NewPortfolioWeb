@@ -359,11 +359,18 @@ function CodePanel() {
 const VIEW_DIR = new THREE.Vector3(3.05, 1.03, 3.32).normalize();
 const VIEW_TARGET = new THREE.Vector3(0, 0.92, -0.12);
 
+// The media query that stacks the hero in site.css. When it matches, the
+// canvas is its own band under the name, so the subject is fitted and
+// centred rather than set off to the right of the headline.
+const STACKED_QUERY =
+  "(max-width: 700px), (max-width: 900px) and (orientation: portrait), (max-height: 500px) and (orientation: landscape)";
+
 function Frame({ offsetRef }) {
   const camRef = useRef();
   const size = useThree((s) => s.size);
 
-  const narrow = size.width < 760;
+  // size changes on every resize, so this is re-read whenever it matters
+  const narrow = size.width < 760 || window.matchMedia(STACKED_QUERY).matches;
   const aspect = size.width / Math.max(size.height, 1);
   const fov = narrow ? 40 : 34;
 

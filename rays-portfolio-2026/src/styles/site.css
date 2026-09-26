@@ -33,7 +33,7 @@
   font-size: 1.1rem;
   letter-spacing: -0.04em;
   line-height: 1;
-  padding: 0.35rem 0.5rem;
+  padding: 0.6rem 0.5rem;
   margin-left: -0.5rem;
 }
 
@@ -75,12 +75,31 @@
   color: var(--paper);
 }
 
+/* Phones: the section links drop to their own row and scroll sideways
+   rather than disappearing, so every section stays one tap away. */
 @media (max-width: 620px) {
+  .nav-inner {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 0.35rem;
+    padding-block: 0.6rem 0.4rem;
+  }
   .nav-list {
+    order: 3;
+    flex: 1 0 100%;
+    margin-inline: -0.75rem;
+    padding-inline: 0.75rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 0.75rem, #000 calc(100% - 1.5rem), transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 0.75rem, #000 calc(100% - 1.5rem), transparent);
+  }
+  .nav-list::-webkit-scrollbar {
     display: none;
   }
-  .nav-inner {
-    justify-content: space-between;
+  .nav-list a {
+    white-space: nowrap;
+    padding-block: 0.5rem;
   }
 }
 
@@ -159,6 +178,9 @@
   max-width: 480px;
   color: var(--ink);
   text-wrap: pretty;
+  /* a paper-coloured halo keeps the copy legible where the desk legs and
+     shadow pass behind it */
+  text-shadow: 0 0 10px var(--paper), 0 0 4px var(--paper), 0 0 2px var(--paper);
 }
 
 .hero-actions {
@@ -222,6 +244,7 @@
   background: var(--amber);
 }
 .btn-line {
+  background: var(--paper);
   border: 1px solid var(--edge);
   color: var(--ink);
 }
@@ -229,7 +252,9 @@
   border-color: var(--ink);
 }
 
-@media (max-width: 700px) {
+/* Keep in sync with STACKED_QUERY in three/DeskScene.jsx. */
+@media (max-width: 700px), (max-width: 900px) and (orientation: portrait),
+  (max-height: 500px) and (orientation: landscape) {
   .hero {
     padding-top: 1rem;
   }
@@ -246,6 +271,12 @@
     min-height: 260px;
     max-height: 380px;
     margin-top: -0.5rem;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero-name {
+    font-size: clamp(3rem, 19vh, 6rem);
   }
 }
 
@@ -532,11 +563,22 @@
   font-size: clamp(1.5rem, 3vw, 2rem);
 }
 .project-link {
+  position: relative;
   font-size: var(--t-sm);
   font-weight: 600;
   color: var(--amber-deep);
   border-bottom: 1px solid var(--amber-wash);
   transition: border-color 0.2s var(--ease);
+}
+.project-link::after,
+.foot a::after {
+  /* invisible hit area: the link text alone is ~24px tall */
+  content: "";
+  position: absolute;
+  inset: -0.6rem -0.4rem;
+}
+.foot a {
+  position: relative;
 }
 .project-link:hover {
   border-bottom-color: var(--amber);
@@ -605,10 +647,10 @@
   display: inline-block;
   font-family: var(--display);
   font-weight: 700;
-  font-size: clamp(1.35rem, 4.5vw, 2.75rem);
+  font-size: clamp(1.2rem, 4.5vw, 2.75rem);
   letter-spacing: -0.035em;
   line-height: 1.1;
-  word-break: break-word;
+  overflow-wrap: break-word;
   background-image: linear-gradient(var(--amber), var(--amber));
   background-repeat: no-repeat;
   background-position: 0 100%;
@@ -624,8 +666,8 @@
 
 .contact-links {
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
   gap: 0.75rem;
   margin-top: 2.75rem;
 }
@@ -635,7 +677,7 @@
   padding: 0.85rem 1.4rem 0.9rem;
   border-radius: 14px;
   background: var(--mist);
-  min-width: 11rem;
+  height: 100%;
   transition: background-color 0.2s var(--ease);
 }
 .contact-links a:hover {
