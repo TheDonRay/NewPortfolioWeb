@@ -365,13 +365,22 @@ const VIEW_TARGET = new THREE.Vector3(0, 0.92, -0.12);
 const STACKED_QUERY =
   "(max-width: 700px), (max-width: 900px) and (orientation: portrait), (max-height: 500px) and (orientation: landscape)";
 
+// Share of the full frame cut off the top. The subject fills the lower part
+// of the frame (hair ~30% down), so the band above it is dropped and the
+// canvas is that much shorter. Keep in sync with .hero-stage in site.css.
+const CROP_TOP = { wide: 0.275, stacked: 0.25 };
+
 function Frame({ offsetRef }) {
   const camRef = useRef();
   const size = useThree((s) => s.size);
 
   // size changes on every resize, so this is re-read whenever it matters
   const narrow = size.width < 760 || window.matchMedia(STACKED_QUERY).matches;
-  const aspect = size.width / Math.max(size.height, 1);
+  // The camera is fitted to the full frame, then only the band under the
+  // crop is rendered, so the student stays the same size on screen.
+  const crop = narrow ? CROP_TOP.stacked : CROP_TOP.wide;
+  const fullHeight = Math.max(size.height, 1) / (1 - crop);
+  const aspect = size.width / fullHeight;
   const fov = narrow ? 40 : 34;
 
   const position = useMemo(() => {
@@ -386,13 +395,35 @@ function Frame({ offsetRef }) {
   }, [fov, narrow, aspect]);
 
   useLayoutEffect(() => {
-    camRef.current?.lookAt(VIEW_TARGET);
+    const cam = camRef.current;
+    if (!cam) return;
+    cam.aspect = aspect;
+    cam.setViewOffset(
+      size.width,
+      fullHeight,
+      0,
+      fullHeight - size.height,
+      size.width,
+      size.height,
+    );
+    cam.lookAt(VIEW_TARGET);
     // Centre the subject on narrow screens; on wide ones it sits right of
     // the headline.
     offsetRef.current = narrow ? 0 : 0.34;
-  }, [position, narrow, offsetRef]);
+  }, [position, narrow, offsetRef, aspect, fullHeight, size.width, size.height]);
 
-  return <PerspectiveCamera ref={camRef} makeDefault fov={fov} position={position} near={0.1} far={60} />;
+  // manual: aspect is the full frame's, set above, not the canvas's.
+  return (
+    <PerspectiveCamera
+      ref={camRef}
+      makeDefault
+      manual
+      fov={fov}
+      position={position}
+      near={0.1}
+      far={60}
+    />
+  );;
 }
 
 /* ── Rig: one orchestrated settle on load, then pointer parallax ── */
