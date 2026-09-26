@@ -32,23 +32,6 @@ export default function Hero() {
         </div>
       </div>
 
-<<<<<<< HEAD
-      <div className="hero-foot">
-        <div className="rail hero-foot-inner">
-          <p className="hero-intro">{profile.intro}</p>
-          <div className="hero-actions">
-            <a className="btn btn-solid" href="#projects">
-              See my work
-            </a>
-            <a
-              className="btn btn-line"
-              href={profile.resume}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Read my resume
-            </a>
-=======
       <div className={`hero-foot${sceneReady ? " is-ready" : ""}`}>
         <div className="rail">
           <div className="hero-foot-inner">
@@ -66,7 +49,6 @@ export default function Hero() {
                 Read my résumé
               </a>
             </div>
->>>>>>> 181ac2ca8cbe6578794fec0bdb70c47950263b46
           </div>
         </div>
       </div>
