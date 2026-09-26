@@ -132,13 +132,16 @@
 }
 
 /* In flow, so the block reserves its own height instead of floating
-   over whatever comes next. ~32px under the name on phones, ~56px wide.
+   over whatever comes next. The camera drops the empty band above the
+   student (CROP_TOP in three/DeskScene.jsx), so the height is the full
+   frame times (1 - 0.275). The margin plus the small pad left above the
+   hair puts it ~32px under the name on phones, ~48-64px wide.
    pointer-events stay off: parallax is read on the window, and touch
    scrolling passes straight through the canvas. */
 .hero-stage {
   position: relative;
-  margin-top: clamp(2rem, 1rem + 3vw, 3.5rem);
-  height: clamp(440px, calc(100svh - 12rem), 860px);
+  margin-top: clamp(1.25rem, 0.25rem + 3vw, 2.5rem);
+  height: calc(clamp(440px, calc(100svh - 12rem), 860px) * 0.725);
   pointer-events: none;
 }
 /* R3F inlines pointer-events: auto on its wrapper, which would undo the
@@ -259,11 +262,13 @@
   .hero-scene {
     padding-top: 0;
   }
-  /* Never wider than tall: the stacked camera fit then frames by width,
-     which leaves room for the front desk leg and its shadow. Wider than
-     that and it frames by height and crops them at the bottom edge. */
+  /* The camera's full frame is never wider than tall: the stacked fit
+     then frames by width, which leaves room for the front desk leg and
+     its shadow. Wider than that and it frames by height and crops them at
+     the bottom edge. The canvas shows that frame less the empty band
+     cropped off its top (CROP_TOP.stacked = 0.25), hence the 0.75. */
   .hero-stage {
-    height: clamp(260px, 46svh, 380px);
+    height: calc(clamp(260px, 46svh, 380px) * 0.75);
     max-width: clamp(260px, 46svh, 380px);
     margin-inline: auto;
   }
