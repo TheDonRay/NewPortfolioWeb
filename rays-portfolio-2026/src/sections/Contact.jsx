@@ -21,7 +21,9 @@ export default function Contact() {
         </p>
 
         <a className="contact-primary" href={`mailto:${profile.email}`}>
-          {profile.email}
+          {/* on a phone the address wraps at the @, not mid-word */}
+          {profile.email.split("@")[0]}
+          <wbr />@{profile.email.split("@")[1]}
         </a>
 
         <ul className="contact-links">
