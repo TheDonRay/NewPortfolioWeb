@@ -16,7 +16,7 @@ export const profile = {
   linkedinHandle: "rayatchowdhury2005",
   resume: "/resume.pdf",
   intro:
-    "Hey! My name is Rayat. I’m a Software Engineer who loves building REST APIs, learning System Design, and absolutely hates LeetCode!",
+    "Hey! I’m Rayat, a Software Engineer passionate about building backend systems, designing REST APIs, and learning System Design. I’m also on a never-ending journey to tolerate LeetCode.",
 };
 
 export const education = {
