@@ -15,6 +15,8 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/rayatchowdhury2005/",
   linkedinHandle: "rayatchowdhury2005",
   resume: "/resume.pdf",
+  // Cal.com username/event slug — cal.com/rayat/meeting (30 min)
+  calLink: "rayat/meeting",
   intro:
     "Hey! I’m Rayat, a Software Engineer passionate about building backend systems, designing REST APIs, and learning System Design. I’m also on a never-ending journey to tolerate LeetCode.",
 };
@@ -190,5 +192,6 @@ export const sections = [
   { id: "skills", label: "Skills" },
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
+  { id: "book", label: "Book a call" },
   { id: "contact", label: "Contact" },
 ];

@@ -624,6 +624,36 @@
   border-radius: 6px;
 }
 
+/* ── Book a call ────────────────────────────────────────────── */
+.book-sub {
+  color: var(--slate);
+  max-width: 52ch;
+  margin-bottom: 2rem;
+}
+/* Cal.com draws its own card, so no border of ours around it. */
+.book-frame {
+  border-radius: 18px;
+  overflow: hidden;
+}
+/* Reserve room so the page doesn't jump when the iframe arrives. */
+.book-embed {
+  width: 100%;
+  min-height: 640px;
+  overflow: auto;
+}
+.book-fallback {
+  margin-top: 1rem;
+  font-size: var(--t-sm);
+  color: var(--slate-soft);
+}
+.book-fallback a {
+  color: var(--amber-deep);
+  font-weight: 600;
+}
+.book-fallback a:hover {
+  text-decoration: underline;
+}
+
 /* ── Contact ────────────────────────────────────────────────── */
 .contact {
   padding-bottom: 3rem;

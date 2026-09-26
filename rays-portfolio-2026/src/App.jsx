@@ -6,6 +6,7 @@ import About from "./sections/About.jsx";
 import Skills from "./sections/Skills.jsx";
 import Experience from "./sections/Experience.jsx";
 import Projects from "./sections/Projects.jsx";
+import BookCall from "./sections/BookCall.jsx";
 import Contact from "./sections/Contact.jsx";
 import "./styles/site.css";
 
@@ -22,6 +23,7 @@ function Page() {
         <Skills />
         <Experience />
         <Projects />
+        <BookCall />
         <Contact />
       </main>
     </>
