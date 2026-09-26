@@ -94,7 +94,7 @@ export default function Nav() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Résumé
+          Resume
         </a>
       </div>
     </nav>
