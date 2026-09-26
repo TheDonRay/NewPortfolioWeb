@@ -16,10 +16,8 @@ export default function Hero() {
 
   return (
     <header className="hero" id="top">
-      {/* The render gets its own block; nothing but the name shares it. */}
-      <div className="hero-scene">
-        {/* The name is set behind the render; the desk and the student
-            occlude it, which is the whole point of the composition. */}
+      {/* Name, then render, stacked in flow on the same rail as the intro. */}
+      <div className="hero-scene rail">
         <h1 className="hero-name">
           <span>{profile.first}</span>
           <span>{profile.last}</span>
