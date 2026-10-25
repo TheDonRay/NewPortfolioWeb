@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/styles/site.css"
+        ],
+        "createdAt": "2026-10-25T16:35:54.329Z",
+        "reason": "Claude decided: L599 is .project-dot::before, an 8px round carousel dot centered with inset:0/margin:auto, not a card border"
+      }
+    ]
+  }
+}

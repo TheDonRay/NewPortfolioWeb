@@ -537,11 +537,89 @@
 }
 
 /* ── Projects ───────────────────────────────────────────────── */
-.project-list {
+.project-carousel {
   display: grid;
+  gap: 1.1rem;
+  border-radius: 20px;
+}
+.project-carousel:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 4px;
+}
+.project-viewport {
+  overflow: hidden;
+  border-radius: 20px;
+}
+.project-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.project-arrows {
+  display: flex;
+  gap: 0.5rem;
+}
+.project-arrow {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--edge);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+.project-arrow:hover {
+  border-color: var(--amber);
+  color: var(--amber-deep);
+}
+.project-arrow:focus-visible,
+.project-dot:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+.project-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem;
+  /* line the first dot up optically with the card edge */
+  margin-left: -8px;
+}
+.project-dot {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.project-dot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--edge);
+  transition: transform 0.25s var(--ease), background 0.25s var(--ease);
+}
+.project-dot:hover::before {
+  background: var(--slate-soft);
+}
+.project-dot[aria-current="true"]::before {
+  transform: scale(1.35);
+  background: var(--amber);
+}
+.project-links {
+  display: flex;
   gap: 1.25rem;
 }
 .project {
+  touch-action: pan-y;
   padding: clamp(1.5rem, 4vw, 2.5rem);
   border-radius: 20px;
   border: 1px solid var(--edge);

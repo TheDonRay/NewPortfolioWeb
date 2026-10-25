@@ -151,6 +151,9 @@ export const experience = [
   },
 ];
 
+// Curated copy keyed by GitHub repo name. Live repos tagged `portfolio`
+// (via /api/projects) pick up blurb/points/stack from here when names match;
+// this list is also the fallback when the API is unreachable.
 export const projects = [
   {
     name: "PropertyAnalyzer",
