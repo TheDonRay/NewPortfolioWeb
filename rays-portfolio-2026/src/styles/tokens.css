@@ -1,48 +1,47 @@
 /* ─────────────────────────────────────────────────────────────
-   Late Shift — design tokens
-   A warm pool of light in a cold white room.
+   Night Signal — design tokens
+   A black stage, a live field behind it, one blue signal.
    ───────────────────────────────────────────────────────────── */
 
 :root {
-  /* Surface */
-  --paper: #ffffff;
-  --mist: #f2f4f7; /* cool well, deliberately not a warm cream */
-  --edge: #e3e7ec;
-  --edge-soft: #eef1f5;
+  color-scheme: dark;
 
-  /* Ink — blue-black, the same value the 3D scene casts as shadow */
-  --ink: #151b24;
-  --slate: #5c6875;
-  --slate-soft: #8b95a1;
+  /* Stage and raised graphite */
+  --void: #000000;
+  --panel: #111317;
+  --panel-hi: #181b20;
+  --line: rgba(255, 255, 255, 0.12);
+  --line-hi: rgba(255, 255, 255, 0.26);
 
-  /* The single accent: light. Lamp, screen, links, focus. */
-  --amber: #ff6a1a;
-  --amber-deep: #d14e08;
-  --amber-wash: rgba(255, 106, 26, 0.1);
+  /* Ink, from loudest to quietest */
+  --ink: #f2f3f5;
+  --soft: #c4c8ce;
+  --mute: #9aa0a8;
+  --dim: #7a8089;
 
-  /* Type */
-  --display: "Bricolage Grotesque", "Archivo", system-ui, sans-serif;
-  --text: "Archivo", system-ui, -apple-system, sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, monospace;
+  /* The one signal: field sparks, status dot, focus, selection */
+  --signal: #3d7bff;
+  --signal-hi: #6f9dff;
+  --signal-wash: rgba(61, 123, 255, 0.16);
 
-  /* Scale — 1.25 minor third off 17px */
-  --t-xs: 0.78rem;
+  /* Type — one family, Geist */
+  --sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --t-xs: 0.8125rem;
   --t-sm: 0.875rem;
   --t-body: 1.0625rem;
-  --t-lead: 1.25rem;
-  --t-h3: 1.5rem;
-  --t-h2: clamp(2rem, 4.5vw, 3.25rem);
-  --t-h1: clamp(3rem, 12vw, 9.5rem);
+  --t-lead: clamp(1.125rem, 1.6vw, 1.3125rem);
+  --t-h3: clamp(1.375rem, 2.4vw, 2rem);
+  --t-h2: clamp(3rem, 9.5vw, 8.75rem);
+  --t-h1: clamp(2.4rem, 10.2vw, 10.75rem);
 
   /* Rhythm */
-  --gut: clamp(1.25rem, 5vw, 4.5rem);
-  --stack: clamp(4.5rem, 11vh, 9rem);
-  --measure: 63ch;
-  --rail: 1080px;
+  --gut: clamp(1rem, 4.5vw, 4.5rem);
+  --stack: clamp(6rem, 14vh, 11rem);
+  --rail: 1440px;
+  --nav-h: 4.25rem;
 
-  /* Depth — one soft, one lifted. Not the same shadow on everything. */
-  --lift: 0 1px 2px rgba(21, 27, 36, 0.04), 0 8px 24px rgba(21, 27, 36, 0.06);
-  --lift-hi: 0 2px 4px rgba(21, 27, 36, 0.05), 0 18px 44px rgba(21, 27, 36, 0.1);
+  --r-panel: 20px;
 
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }

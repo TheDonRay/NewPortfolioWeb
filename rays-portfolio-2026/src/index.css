@@ -10,34 +10,29 @@
 
 html {
   scroll-behavior: smooth;
-  /* sticky nav clearance for in-page anchors */
-  scroll-padding-top: 6rem;
+  /* fixed nav clearance for in-page anchors */
+  scroll-padding-top: calc(var(--nav-h) + 1rem);
   -webkit-text-size-adjust: 100%;
-}
-@media (max-width: 620px) {
-  html {
-    /* the nav gains a second row of links on phones */
-    scroll-padding-top: 7.5rem;
-  }
+  background: var(--void);
 }
 
 body {
-  font-family: var(--text);
+  font-family: var(--sans);
   font-size: var(--t-body);
   line-height: 1.65;
-  background: var(--paper);
+  background: var(--void);
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: clip;
+  font-feature-settings: "ss01";
 }
 
 h1,
 h2,
 h3 {
-  font-family: var(--display);
-  font-weight: 700;
-  line-height: 1.04;
+  font-weight: 500;
+  line-height: 1.05;
   letter-spacing: -0.03em;
   text-wrap: balance;
 }
@@ -66,14 +61,14 @@ canvas {
 }
 
 ::selection {
-  background: var(--amber);
+  background: var(--signal);
   color: #fff;
 }
 
 :focus-visible {
-  outline: 2px solid var(--amber);
+  outline: 2px solid var(--signal-hi);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 6px;
 }
 
 /* ── Shared layout primitives ───────────────────────────────── */
@@ -86,45 +81,114 @@ canvas {
 }
 
 .section {
+  position: relative;
   padding-block: var(--stack);
 }
 
-/* A section heading sits on a hairline with its own counter-free label.
-   The rule carries the structure so the type doesn't need an eyebrow. */
+/* Section titles speak in the hero's voice: poster-scale capitals,
+   with the short descriptive line set small beside them. */
 .section-head {
   display: flex;
-  align-items: baseline;
-  gap: clamp(1rem, 3vw, 2.5rem);
-  padding-bottom: 1.75rem;
-  margin-bottom: clamp(2.5rem, 5vw, 4rem);
-  border-bottom: 1px solid var(--edge);
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem 3rem;
+  padding-bottom: clamp(1.5rem, 3vw, 2.25rem);
+  margin-bottom: clamp(2.75rem, 6vw, 5rem);
+  border-bottom: 1px solid var(--line);
 }
 
 .section-head h2 {
   font-size: var(--t-h2);
-  flex: none;
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  margin-left: -0.05em;
 }
 
 .section-head .aside {
-  margin-left: auto;
+  max-width: 24ch;
   font-size: var(--t-sm);
-  color: var(--slate-soft);
-  text-align: right;
-  flex: 1;
-  min-width: 0;
+  line-height: 1.45;
+  color: var(--mute);
+  padding-bottom: 0.4rem;
 }
 
-/* Narrow screens: the aside drops under the heading instead of being
-   squeezed into a ragged right-aligned column beside it. */
-@media (max-width: 520px) {
-  .section-head {
-    flex-wrap: wrap;
-    row-gap: 0.5rem;
+/* Alternate heads sit on the right, echoing the split hero title */
+.section-head--end {
+  flex-direction: row-reverse;
+}
+.section-head--end .aside {
+  text-align: left;
+}
+.section-head:not(.section-head--end) .aside {
+  text-align: right;
+}
+
+@media (max-width: 640px) {
+  .section-head,
+  .section-head--end {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  .section-head .aside {
-    flex-basis: 100%;
-    margin-left: 0;
+  .section-head .aside,
+  .section-head:not(.section-head--end) .aside {
     text-align: left;
+    padding-bottom: 0;
+  }
+}
+
+/* Pills — the one control shape on the page */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 2.75rem;
+  padding: 0.55rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-hi);
+  font-size: var(--t-sm);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--ink);
+  white-space: nowrap;
+  transition:
+    background-color 0.25s var(--ease),
+    border-color 0.25s var(--ease),
+    color 0.25s var(--ease);
+}
+.pill:hover {
+  border-color: var(--ink);
+  background: rgba(255, 255, 255, 0.06);
+}
+.pill--solid {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--void);
+}
+.pill--solid:hover {
+  background: #fff;
+  border-color: #fff;
+}
+
+/* Live status dot: the signal colour, breathing slowly */
+.dot {
+  position: relative;
+  width: 0.5rem;
+  height: 0.5rem;
+  flex: none;
+  border-radius: 50%;
+  background: var(--signal);
+  box-shadow: 0 0 0 0 rgba(61, 123, 255, 0.55);
+  animation: breathe 2.8s var(--ease) infinite;
+}
+@keyframes breathe {
+  0% {
+    box-shadow: 0 0 0 0 rgba(61, 123, 255, 0.55);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 0.55rem rgba(61, 123, 255, 0);
   }
 }
 
@@ -134,29 +198,32 @@ canvas {
   top: 0;
   z-index: 999;
   background: var(--ink);
-  color: #fff;
+  color: var(--void);
   padding: 0.75rem 1.25rem;
-  border-radius: 0 0 8px 0;
+  border-radius: 0 0 12px 0;
 }
 .skip:focus {
   left: 0;
 }
 
-/* Scrollbar — thin, ink, no chrome */
+/* Scrollbar — thin graphite, no chrome */
+html {
+  scrollbar-color: #2a2e35 var(--void);
+}
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--paper);
+  background: var(--void);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--edge);
-  border: 3px solid var(--paper);
+  background: #2a2e35;
+  border: 3px solid var(--void);
   border-radius: 99px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--slate-soft);
+  background: #3b4049;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -168,6 +235,7 @@ canvas {
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
     transition-duration: 0.01ms !important;
   }
 }

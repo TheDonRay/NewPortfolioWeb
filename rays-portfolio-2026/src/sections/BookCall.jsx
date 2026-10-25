@@ -41,9 +41,10 @@ function loadCal() {
 export default function BookCall() {
   const sectionRef = useRef(null);
   const [near, setNear] = useState(false);
+  const [ready, setReady] = useState(false);
 
   // The embed is a heavy iframe; wait until the section is close to the
-  // viewport so it never competes with the 3D hero on first paint.
+  // viewport so it never competes with the hero on first paint.
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
@@ -64,16 +65,37 @@ export default function BookCall() {
     if (!near) return;
     const Cal = loadCal();
     // StrictMode runs effects twice; one inline embed is enough.
-    if (Cal.ns?.[NAMESPACE]) return;
+    if (Cal.ns?.[NAMESPACE]) {
+      // remounted (StrictMode): the embed already exists
+      setReady(true);
+      return;
+    }
     Cal("init", NAMESPACE, { origin: "https://app.cal.com" });
     Cal.ns[NAMESPACE]("inline", {
       elementOrSelector: "#cal-inline",
       calLink: profile.calLink,
-      config: { layout: "month_view", theme: "light" },
+      config: { layout: "month_view", theme: "dark" },
+    });
+    // Cal fills the mount with its own loader first, so readiness comes
+    // from its event rather than from the mount being non-empty.
+    Cal.ns[NAMESPACE]("on", {
+      action: "linkReady",
+      callback: () => setReady(true),
     });
     Cal.ns[NAMESPACE]("ui", {
-      theme: "light",
-      cssVarsPerTheme: { light: { "cal-brand": "#ff6a1a" } },
+      theme: "dark",
+      cssVarsPerTheme: {
+        dark: {
+          "cal-brand": "#3d7bff",
+          "cal-bg": "#000000",
+          "cal-bg-muted": "#111317",
+          "cal-bg-subtle": "#111317",
+          "cal-bg-emphasis": "#181b20",
+          "cal-border": "rgba(255, 255, 255, 0.12)",
+          "cal-border-subtle": "rgba(255, 255, 255, 0.12)",
+          "cal-border-booker": "rgba(255, 255, 255, 0.12)",
+        },
+      },
       hideEventTypeDetails: false,
       layout: "month_view",
     });
@@ -97,6 +119,11 @@ export default function BookCall() {
 
         <div className="book-frame">
           <div id="cal-inline" className="book-embed" />
+          {!ready && (
+            <p className="book-loading" role="status">
+              Loading calendar…
+            </p>
+          )}
         </div>
 
         <p className="book-fallback">

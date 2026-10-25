@@ -40,7 +40,7 @@ export default function Projects() {
   return (
     <section className="section projects" id="projects">
       <div className="rail">
-        <div className="section-head">
+        <div className="section-head section-head--end">
           <h2>Projects</h2>
           <p className="aside">Things I built end to end</p>
         </div>
@@ -57,6 +57,10 @@ export default function Projects() {
             {/* Above the card so the controls never move when slide height changes */}
             {count > 1 && (
               <div className="project-controls">
+                <p className="project-count" aria-hidden="true">
+                  {String(i + 1).padStart(2, "0")}
+                  <span> / {String(count).padStart(2, "0")}</span>
+                </p>
                 <div className="project-dots">
                   {projects.map((proj, n) => (
                     <button

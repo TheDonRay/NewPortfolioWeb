@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-25T00:00:00.000Z",
+  "title": "Design System: Rayat Chowdhury Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "signal": { "role": "primary", "displayName": "Signal Blue", "canonical": "#3d7bff", "tonalRamp": ["#081536", "#0f2457", "#17377f", "#214fb3", "#3d7bff", "#6f9dff", "#a6c3ff", "#dce7ff"] },
+      "signal-hi": { "role": "primary", "displayName": "Signal Blue, Lit", "canonical": "#6f9dff", "tonalRamp": ["#081536", "#0f2457", "#17377f", "#214fb3", "#3d7bff", "#6f9dff", "#a6c3ff", "#dce7ff"] },
+      "void": { "role": "neutral", "displayName": "Void", "canonical": "#000000", "tonalRamp": ["#000000", "#111317", "#181b20", "#2a2e35", "#7a8089", "#9aa0a8", "#c4c8ce", "#f2f3f5"] },
+      "panel": { "role": "neutral", "displayName": "Graphite Panel", "canonical": "#111317", "tonalRamp": ["#000000", "#111317", "#181b20", "#2a2e35", "#7a8089", "#9aa0a8", "#c4c8ce", "#f2f3f5"] },
+      "line": { "role": "neutral", "displayName": "Hairline", "canonical": "rgba(255, 255, 255, 0.12)", "tonalRamp": ["rgba(255,255,255,0.04)", "rgba(255,255,255,0.06)", "rgba(255,255,255,0.09)", "rgba(255,255,255,0.12)", "rgba(255,255,255,0.18)", "rgba(255,255,255,0.26)", "rgba(255,255,255,0.4)", "rgba(255,255,255,0.6)"] },
+      "line-hi": { "role": "neutral", "displayName": "Hairline, Raised", "canonical": "rgba(255, 255, 255, 0.26)", "tonalRamp": ["rgba(255,255,255,0.04)", "rgba(255,255,255,0.06)", "rgba(255,255,255,0.09)", "rgba(255,255,255,0.12)", "rgba(255,255,255,0.18)", "rgba(255,255,255,0.26)", "rgba(255,255,255,0.4)", "rgba(255,255,255,0.6)"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#f2f3f5", "tonalRamp": ["#000000", "#111317", "#181b20", "#2a2e35", "#7a8089", "#9aa0a8", "#c4c8ce", "#f2f3f5"] },
+      "soft": { "role": "neutral", "displayName": "Soft Ink", "canonical": "#c4c8ce", "tonalRamp": ["#000000", "#111317", "#181b20", "#2a2e35", "#7a8089", "#9aa0a8", "#c4c8ce", "#f2f3f5"] },
+      "mute": { "role": "neutral", "displayName": "Mute Ink", "canonical": "#9aa0a8", "tonalRamp": ["#000000", "#111317", "#181b20", "#2a2e35", "#7a8089", "#9aa0a8", "#c4c8ce", "#f2f3f5"] },
+      "dim": { "role": "neutral", "displayName": "Dim Ink", "canonical": "#7a8089", "tonalRamp": ["#000000", "#111317", "#181b20", "#2a2e35", "#7a8089", "#9aa0a8", "#c4c8ce", "#f2f3f5"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The hero name only, uppercase, split across two lines with the second right-aligned." },
+      "headline": { "displayName": "Headline", "purpose": "Uppercase poster-scale section titles; the contact head uses the same voice." },
+      "title": { "displayName": "Title", "purpose": "Job roles and About sub-heads, sentence case." },
+      "lead": { "displayName": "Lead", "purpose": "Project blurbs and section sub-copy." },
+      "body": { "displayName": "Body", "purpose": "Running prose at 64 to 68ch in soft ink." },
+      "label": { "displayName": "Label", "purpose": "Pills, nav links, project links, carousel count." },
+      "caption": { "displayName": "Caption", "purpose": "Stack tags and the Now badge." }
+    },
+    "shadows": [
+      { "name": "signal-pulse", "value": "0 0 0 0 rgba(61, 123, 255, 0.55) -> 0 0 0 0.55rem rgba(61, 123, 255, 0)", "purpose": "Breathing ring on the status dot, 2.8s infinite. The only shadow; light, not elevation." }
+    ],
+    "motion": [
+      { "name": "ease", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "The single easing for every transition and the load sequence." },
+      { "name": "state", "value": "0.2s to 0.25s", "purpose": "Hover and colour/border transitions on links, pills, chips, icon buttons." },
+      { "name": "nav-lift", "value": "0.35s", "purpose": "Nav background, border and blur when the page scrolls." },
+      { "name": "rise", "value": "1.25s, delay 0.15s / 0.3s", "purpose": "Hero name lines rise out of their masks on load." },
+      { "name": "field-in", "value": "2.4s, delay 0.2s", "purpose": "Signal field fades and settles from scale 1.04 on load." },
+      { "name": "fade", "value": "1s, delays 0.9s to 1.3s", "purpose": "Hero caption, foot band and scroll cue fade up after the name." }
+    ],
+    "breakpoints": [
+      { "name": "nav-name", "value": "520px" },
+      { "name": "section-head-stack", "value": "640px" },
+      { "name": "spec-stack", "value": "700px" },
+      { "name": "job-stack", "value": "760px" },
+      { "name": "project-stack", "value": "860px" },
+      { "name": "nav-collapse", "value": "900px" },
+      { "name": "cue-hide", "value": "1100px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Solid Pill",
+      "kind": "button",
+      "refersTo": "button-solid",
+      "description": "The one primary action in a group.",
+      "html": "<a class=\"ds-pill ds-pill--solid\" href=\"#\">See my work</a>",
+      "css": ".ds-pill { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; min-height: 2.75rem; padding: 0.55rem 1.25rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.26); font-family: Geist, ui-sans-serif, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; line-height: 1.2; color: #f2f3f5; text-decoration: none; white-space: nowrap; transition: background-color 0.25s cubic-bezier(0.16,1,0.3,1), border-color 0.25s cubic-bezier(0.16,1,0.3,1), color 0.25s cubic-bezier(0.16,1,0.3,1); } .ds-pill--solid { background: #f2f3f5; border-color: #f2f3f5; color: #000; } .ds-pill--solid:hover { background: #fff; border-color: #fff; } .ds-pill:focus-visible { outline: 2px solid #6f9dff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Outline Pill",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary actions beside the solid pill.",
+      "html": "<a class=\"ds-pill-o\" href=\"#\">Read my resume</a>",
+      "css": ".ds-pill-o { display: inline-flex; align-items: center; justify-content: center; min-height: 2.75rem; padding: 0.55rem 1.25rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.26); background: transparent; font-family: Geist, ui-sans-serif, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; line-height: 1.2; color: #f2f3f5; text-decoration: none; transition: background-color 0.25s cubic-bezier(0.16,1,0.3,1), border-color 0.25s cubic-bezier(0.16,1,0.3,1); } .ds-pill-o:hover { border-color: #f2f3f5; background: rgba(255,255,255,0.06); } .ds-pill-o:focus-visible { outline: 2px solid #6f9dff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Status Pill",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Outline pill led by the breathing signal dot; the nav Book a call action.",
+      "html": "<a class=\"ds-pill-s\" href=\"#\"><span class=\"ds-dot\"></span>Book a call</a>",
+      "css": ".ds-pill-s { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 2.5rem; padding: 0 1.15rem 0 1rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.26); background: rgba(10,11,13,0.55); font-family: Geist, ui-sans-serif, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; color: #f2f3f5; text-decoration: none; transition: border-color 0.25s cubic-bezier(0.16,1,0.3,1), background-color 0.25s cubic-bezier(0.16,1,0.3,1); } .ds-pill-s:hover { border-color: #f2f3f5; background: rgba(255,255,255,0.06); } .ds-pill-s:focus-visible { outline: 2px solid #6f9dff; outline-offset: 3px; } .ds-dot { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: #3d7bff; animation: ds-breathe 2.8s cubic-bezier(0.16,1,0.3,1) infinite; } @keyframes ds-breathe { 0% { box-shadow: 0 0 0 0 rgba(61,123,255,0.55); } 70%, 100% { box-shadow: 0 0 0 0.55rem rgba(61,123,255,0); } }"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Hairline skill chip; not selectable.",
+      "html": "<span class=\"ds-chip\">Node.js</span> <span class=\"ds-chip\">Docker</span>",
+      "css": ".ds-chip { display: inline-block; padding: 0.4rem 0.9rem; border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; font-family: Geist, ui-sans-serif, system-ui, sans-serif; font-size: 0.875rem; line-height: 1.3; color: #c4c8ce; transition: border-color 0.2s cubic-bezier(0.16,1,0.3,1), color 0.2s cubic-bezier(0.16,1,0.3,1); } .ds-chip:hover { border-color: rgba(255,255,255,0.26); color: #f2f3f5; }"
+    },
+    {
+      "name": "Graphite Panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "The only raised surface: project slide, education card, calendar placeholder.",
+      "html": "<div class=\"ds-panel\"><p class=\"ds-panel-title\">Hunter College</p><p class=\"ds-panel-meta\">New York, NY</p><div class=\"ds-panel-row\"><span>Degree</span><span>B.A. Computer Science</span></div></div>",
+      "css": ".ds-panel { padding: clamp(1.5rem, 3vw, 2.25rem); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; background: #111317; font-family: Geist, ui-sans-serif, system-ui, sans-serif; color: #f2f3f5; } .ds-panel-title { margin: 0; font-size: 1.25rem; font-weight: 500; letter-spacing: -0.02em; line-height: 1.25; } .ds-panel-meta { margin: 0.25rem 0 1.5rem; font-size: 0.875rem; color: #9aa0a8; } .ds-panel-row { display: flex; justify-content: space-between; gap: 1rem; padding-block: 0.8rem; border-top: 1px solid rgba(255,255,255,0.12); font-size: 0.875rem; } .ds-panel-row span:first-child { color: #9aa0a8; }"
+    },
+    {
+      "name": "Nav Capsule",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Centred section links in a blurred hairline capsule; active link gets a 9% white pill.",
+      "html": "<ul class=\"ds-nav\"><li><a href=\"#\" class=\"is-active\">About</a></li><li><a href=\"#\">Skills</a></li><li><a href=\"#\">Experience</a></li><li><a href=\"#\">Projects</a></li></ul>",
+      "css": ".ds-nav { display: inline-flex; gap: 0.125rem; list-style: none; margin: 0; padding: 0.25rem; border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; background: rgba(10,11,13,0.55); backdrop-filter: blur(12px); font-family: Geist, ui-sans-serif, system-ui, sans-serif; } .ds-nav a { display: block; padding: 0.45rem 0.95rem; border-radius: 999px; font-size: 0.875rem; line-height: 1.3; color: #9aa0a8; text-decoration: none; transition: color 0.2s cubic-bezier(0.16,1,0.3,1), background-color 0.2s cubic-bezier(0.16,1,0.3,1); } .ds-nav a:hover { color: #f2f3f5; } .ds-nav a.is-active { color: #f2f3f5; background: rgba(255,255,255,0.09); } .ds-nav a:focus-visible { outline: 2px solid #6f9dff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Section Head",
+      "kind": "custom",
+      "refersTo": "headline",
+      "description": "Poster-scale uppercase title with a short mute aside on the opposite side, closed by a hairline.",
+      "html": "<div class=\"ds-head\"><h2>Skills</h2><p>24 tools across five areas</p></div>",
+      "css": ".ds-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem 3rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.12); font-family: Geist, ui-sans-serif, system-ui, sans-serif; color: #f2f3f5; } .ds-head h2 { margin: 0; font-size: clamp(3rem, 9.5vw, 6rem); font-weight: 500; line-height: 0.82; letter-spacing: -0.04em; text-transform: uppercase; } .ds-head p { margin: 0; max-width: 24ch; padding-bottom: 0.4rem; font-size: 0.875rem; line-height: 1.45; color: #9aa0a8; text-align: right; }"
+    },
+    {
+      "name": "Icon Arrow Button",
+      "kind": "button",
+      "refersTo": "icon-button",
+      "description": "44px circular outline control for the project carousel.",
+      "html": "<button class=\"ds-arrow\" aria-label=\"Next project\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m9 18 6-6-6-6\"/></svg></button>",
+      "css": ".ds-arrow { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid rgba(255,255,255,0.26); border-radius: 50%; background: transparent; color: #f2f3f5; cursor: pointer; transition: border-color 0.2s cubic-bezier(0.16,1,0.3,1), background-color 0.2s cubic-bezier(0.16,1,0.3,1); } .ds-arrow:hover { border-color: #f2f3f5; background: rgba(255,255,255,0.06); } .ds-arrow:focus-visible { outline: 2px solid #6f9dff; outline-offset: 3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Night Signal",
+    "overview": "The page is a dark broadcast frame. A true-black stage carries a live, canvas-drawn field of dotted flow lines that bow around an elliptical lens, with a few blue sparks riding them; enormous uppercase type is set over it, split across the frame. Everything else is small, quiet and sentence case, so the poster-scale words and the field do all the shouting.\n\nDensity is low and deliberate: one wide rail, generous vertical stacking between sections, structure drawn with hairlines rather than boxes. Raised graphite panels appear only where a block of content needs to be held together (the education card, the project slide, the calendar placeholder). The single colour of the system is one signal blue, and it is rationed to light-like roles: sparks in the field, the breathing status dot, focus and selection.\n\nThe system rejects the white card-grid portfolio and the centred headline-over-cards hero.",
+    "keyCharacteristics": [
+      "True black stage (#000) with graphite panels; no light surfaces anywhere.",
+      "One family, Geist: uppercase medium display at poster scale, tight negative tracking; small sentence-case UI.",
+      "One blue signal, used as light, never as fill.",
+      "1px hairlines at 12% white as the structural device; no shadows.",
+      "Pills and circles for every control; 20px panels for every container.",
+      "A live generative field behind the hero and, quieter, behind the closing contact section."
+    ],
+    "rules": [
+      { "name": "The One Signal Rule", "body": "Blue appears only as light: field sparks, the status dot, focus rings, selection, and the contact email's hover underline. It never fills a button, never colours a heading or body copy, and no second accent exists.", "section": "colors" },
+      { "name": "The Black Stage Rule", "body": "The page is #000 end to end. Depth comes from the graphite panel and the hero's graphite floor glow, never from a light section or a tinted band.", "section": "colors" },
+      { "name": "The Poster Voice Rule", "body": "Only headings speak in capitals, and when they do they are huge: uppercase, weight 500, -0.04em, line-height at or under 0.86. Everything below title scale stays sentence case. Project names keep their source casing so compound names keep their word boundaries.", "section": "typography" },
+      { "name": "The One Family Rule", "body": "Geist only. Hierarchy comes from scale and case, never from a second typeface or heavy weights.", "section": "typography" },
+      { "name": "The Hairline Rule", "body": "Structure is drawn, not lifted: 1px lines at 12% white divide and contain; 26% white outlines anything clickable. If something needs separating, add a hairline, not a shadow.", "section": "elevation" },
+      { "name": "The Pill Rule", "body": "A control is a pill or a circle; a container is a 20px panel. No square buttons, no 4 to 12px \"card\" radii.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do keep the page on #000 and hold grouped content in a single graphite panel with a 12% hairline and 20px radius.",
+      "Do set section titles in the poster voice: uppercase Geist 500, -0.04em, line-height 0.82 to 0.86, with a short mute aside on the opposite side and a hairline beneath.",
+      "Do ration Signal Blue to sparks, the status dot, focus, selection and the email hover underline.",
+      "Do use pills for every control: solid ink for the one primary action, outline for the rest.",
+      "Do use 1.5-stroke line icons at 16 to 18px, inline, in the text colour.",
+      "Do divide lists and spec rows with 1px hairlines and mark bullets with short horizontal dashes."
+    ],
+    "donts": [
+      "Don't add a second accent colour or fill a button or heading with blue.",
+      "Don't introduce light sections, white cards or a card grid.",
+      "Don't use box-shadows for elevation; separate with hairlines and the graphite panel.",
+      "Don't set small labels in uppercase or stack an eyebrow/kicker label above a section title; the aside beside the title is the only secondary heading device.",
+      "Don't introduce a second typeface or weights above 500 for headings.",
+      "Don't use intermediate corner radii; it is a pill, a circle, or a 20px panel."
+    ]
+  }
+}

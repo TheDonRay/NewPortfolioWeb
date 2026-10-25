@@ -2,10 +2,15 @@ import { useEffect, useRef, useState } from "react";
 import { profile, sections } from "../data/content";
 
 const items = sections.filter((s) => s.id !== "top");
+// "Book a call" lives in the pill on wide screens, not the link row
+const rowItems = items.filter((s) => s.id !== "book");
 
 export default function Nav() {
   const [active, setActive] = useState("top");
   const [lifted, setLifted] = useState(false);
+  const [open, setOpen] = useState(false);
+  const toggleRef = useRef(null);
+  const menuRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setLifted(window.scrollY > 24);
@@ -52,50 +57,112 @@ export default function Nav() {
     };
   }, []);
 
-  // On phones the link row scrolls sideways; keep the lit item in view.
-  // Scrolls the list only — scrollIntoView would also nudge the page.
-  const listRef = useRef(null);
+  // The phone menu covers the page: lock scroll, close on Escape or on
+  // growing past the breakpoint, and hand focus back to the toggle.
   useEffect(() => {
-    const list = listRef.current;
-    const link = list?.querySelector(".is-active");
-    if (!list || !link || list.scrollWidth <= list.clientWidth) return;
-    const l = link.getBoundingClientRect();
-    const box = list.getBoundingClientRect();
-    const left =
-      list.scrollLeft + l.left - box.left - (list.clientWidth - l.width) / 2;
-    list.scrollTo({ left, behavior: "smooth" });
-  }, [active]);
+    if (!open) return;
+    const root = document.documentElement;
+    root.style.overflow = "hidden";
+    menuRef.current?.querySelector("a")?.focus();
+
+    const onKey = (e) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    const wide = window.matchMedia("(min-width: 900px)");
+    const onWide = (e) => e.matches && setOpen(false);
+
+    window.addEventListener("keydown", onKey);
+    wide.addEventListener("change", onWide);
+    return () => {
+      root.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+      wide.removeEventListener("change", onWide);
+    };
+  }, [open]);
+
+  const link = (id) => ({
+    href: `#${id}`,
+    className: active === id ? "is-active" : undefined,
+    "aria-current": active === id ? "true" : undefined,
+  });
 
   return (
-    <nav className={`nav${lifted ? " is-lifted" : ""}`} aria-label="Sections">
+    <nav
+      className={`nav${lifted ? " is-lifted" : ""}${open ? " is-open" : ""}`}
+      aria-label="Sections"
+    >
       <div className="nav-inner">
         <a className="nav-mark" href="#top" aria-label="Back to top">
-          {profile.first[0]}
-          {profile.last[0]}
+          <span className="nav-monogram" aria-hidden="true">
+            {profile.first[0]}
+            {profile.last[0]}
+          </span>
+          <span className="nav-name">{profile.name}</span>
         </a>
 
-        <ul className="nav-list" ref={listRef}>
+        <ul className="nav-list">
+          {rowItems.map(({ id, label }) => (
+            <li key={id}>
+              <a {...link(id)}>{label}</a>
+            </li>
+          ))}
+        </ul>
+
+        <div className="nav-end">
+          <a
+            className="nav-resume"
+            href={profile.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Resume
+          </a>
+          <a
+            className={`pill nav-book${active === "book" ? " is-active" : ""}`}
+            href="#book"
+            aria-current={active === "book" ? "true" : undefined}
+          >
+            <span className="dot" aria-hidden="true" />
+            Book a call
+          </a>
+          <button
+            type="button"
+            ref={toggleRef}
+            className="nav-toggle"
+            aria-expanded={open}
+            aria-controls="nav-menu"
+            onClick={() => setOpen((o) => !o)}
+          >
+            <span className="nav-toggle-bars" aria-hidden="true" />
+            <span className="nav-toggle-label">{open ? "Close" : "Menu"}</span>
+          </button>
+        </div>
+      </div>
+
+      <div
+        id="nav-menu"
+        className="nav-menu"
+        ref={menuRef}
+        hidden={!open}
+      >
+        <ul>
           {items.map(({ id, label }) => (
             <li key={id}>
-              <a
-                href={`#${id}`}
-                className={active === id ? "is-active" : undefined}
-                aria-current={active === id ? "true" : undefined}
-              >
+              <a {...link(id)} onClick={() => setOpen(false)}>
                 {label}
               </a>
             </li>
           ))}
         </ul>
-
-        <a
-          className="nav-resume"
-          href={profile.resume}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Resume
-        </a>
+        <div className="nav-menu-foot">
+          <a href={`mailto:${profile.email}`}>{profile.email}</a>
+          <a href={profile.resume} target="_blank" rel="noopener noreferrer">
+            Resume
+          </a>
+        </div>
       </div>
     </nav>
   );

@@ -1,3 +1,5 @@
+import { ArrowUpRight } from "lucide-react";
+import SignalField from "../components/SignalField.jsx";
 import { profile } from "../data/content";
 
 // Email is already the headline link below, so it isn't repeated here.
@@ -10,7 +12,10 @@ const links = [
 export default function Contact() {
   return (
     <section className="section contact" id="contact">
-      <div className="rail">
+      {/* The hero's field returns, quieter, to close the page */}
+      <SignalField className="contact-field" intensity={0.55} lens={0.8} />
+
+      <div className="rail contact-inner">
         <h2 className="contact-head">
           Looking for a backend intern who ships?
         </h2>
@@ -31,7 +36,10 @@ export default function Contact() {
             <li key={label}>
               <a href={href} target="_blank" rel="noopener noreferrer">
                 <span className="cl-label">{label}</span>
-                <span className="cl-value">{value}</span>
+                <span className="cl-value">
+                  {value}
+                  <ArrowUpRight size={18} strokeWidth={1.5} aria-hidden="true" />
+                </span>
               </a>
             </li>
           ))}

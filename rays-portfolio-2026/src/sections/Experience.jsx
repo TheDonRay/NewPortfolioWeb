@@ -16,7 +16,12 @@ export default function Experience() {
                 <span className="job-dates">
                   {job.start} – {job.end}
                 </span>
-                {job.current && <span className="job-now">Current</span>}
+                {job.current && (
+                  <span className="job-now">
+                    <span className="dot" aria-hidden="true" />
+                    Current
+                  </span>
+                )}
               </div>
 
               <div className="job-what">

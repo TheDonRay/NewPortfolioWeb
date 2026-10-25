@@ -10,7 +10,7 @@ export default function Skills() {
   return (
     <section className="section skills" id="skills">
       <div className="rail">
-        <div className="section-head">
+        <div className="section-head section-head--end">
           <h2>Skills</h2>
           <p className="aside">{total} tools across five areas</p>
         </div>
