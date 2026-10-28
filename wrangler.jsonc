@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "rayatportfoliowesite",
+  "compatibility_date": "2026-06-27",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "rays-portfolio-2026"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
