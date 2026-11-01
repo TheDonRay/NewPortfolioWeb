@@ -184,6 +184,71 @@ export const projects = [
     ],
     href: "https://github.com/TheDonRay/CheckPoint",
   },
+  {
+    name: "Memoria",
+    blurb:
+      "A MERN memory journal that turns your camera roll into an explorable timeline of photos, notes, and places.",
+    stack: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Clerk",
+      "Cloudinary",
+      "Postman",
+    ],
+    points: [
+      "Built a layered Express backend split into routes, controllers, and services, exposing authenticated CRUD endpoints for creating, retrieving, updating, and deleting user memories.",
+      "Secured every memory route with Clerk authentication middleware and Google SSO, rejecting unsigned requests with a 401 before they reach the database.",
+      "Implemented signed Cloudinary uploads scoped to each user's folder and restricted to approved image formats, keeping the API secret on the server.",
+    ],
+    href: "https://github.com/TheDonRay/Memoria",
+  },
+  {
+    name: "MoodyFoodz",
+    blurb:
+      "An AI restaurant recommender that reads your mood and preferences, then suggests nearby places to eat with directions.",
+    stack: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "Claude API",
+      "Google Maps API",
+      "Docker",
+      "GCP Cloud Run",
+      "Cloudflare",
+    ],
+    points: [
+      "Built an Express recommendation service that geocodes a user's address and searches nearby restaurants through the Google Maps Geocoding and Places APIs.",
+      "Integrated the Anthropic Claude API to rank the top 5 restaurants by mood, cuisine, and dietary preferences, parsing structured JSON responses with error handling for invalid output.",
+      "Containerized the backend with Docker and deployed it to GCP Cloud Run, with the React frontend hosted on Cloudflare Pages.",
+    ],
+    href: "https://github.com/TheDonRay/MoodyFoodz",
+  },
+  {
+    name: "Relifio",
+    blurb:
+      "An AI emotional-support platform that turns conversations into “life chapters” you can revisit over time.",
+    stack: ["React.js", "Node.js", "Express.js", "MongoDB Atlas", "OpenAI API", "Vercel"],
+    points: [
+      "Built REST endpoints in Express for user sign-up, AI conversations, and conversation summaries, persisting each session's messages in MongoDB Atlas.",
+      "Integrated the OpenAI API to generate supportive responses and summarize full sessions into chapters users can revisit.",
+      "Added request validation and error handling for missing session IDs and messages, returning clear 400-level errors before any database or AI calls.",
+    ],
+    href: "https://github.com/TheDonRay/Relifio",
+  },
+  {
+    name: "Loader",
+    blurb:
+      "A learning project on how backends behave under real traffic — a simple REST API over a large seeded dataset, measured with data.",
+    stack: ["Node.js", "Express.js", "MongoDB Atlas", "Docker", "k6", "AWS"],
+    points: [
+      "Built a Node.js and Express REST API over a seeded MongoDB product and review dataset, with a service layer kept separate from request handling.",
+      "Implemented both offset (skip/limit) and cursor-based pagination to compare how query cost grows with page depth.",
+      "Wrote a reproducible seeding script using Faker with a fixed seed, deterministic ObjectIds, and batched inserts, configurable up to millions of documents.",
+    ],
+    href: "https://github.com/TheDonRay/Loader",
+  },
 ];
 
 // GitHub repos tagged `portfolio` that should not appear on the site.
