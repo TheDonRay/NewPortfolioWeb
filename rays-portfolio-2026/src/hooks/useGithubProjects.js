@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { projects as curated } from "../data/content";
+import { projects as curated, hiddenProjects } from "../data/content";
 
 // GitHub topics are kebab-case slugs; these read better as proper names.
 const LABELS = {
@@ -60,7 +60,11 @@ export default function useGithubProjects() {
       .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
       .then((repos) => {
         if (Array.isArray(repos) && repos.length) {
-          setProjects(repos.map(toCard));
+          setProjects(
+            repos
+              .filter((r) => !hiddenProjects.includes(r.name))
+              .map(toCard),
+          );
         }
       })
       .catch(() => {

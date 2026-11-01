@@ -65,58 +65,49 @@ export const about = [
 export const skills = [
   {
     label: "Languages",
-    items: ["TypeScript", "JavaScript", "C++", "Python", "SQL", "HTML"],
+    items: ["TypeScript", "JavaScript", "Python", "C++", "SQL", "HTML"],
   },
   {
     label: "Frameworks & libraries",
+    items: ["Node.js", "Express.js", "React.js", "Tailwind CSS", "Drupal CMS"],
+  },
+  {
+    label: "APIs & integrations",
+    items: ["REST APIs", "GraphQL", "OpenAI API", "Stripe", "JWT"],
+  },
+  {
+    label: "Databases",
+    items: ["MongoDB", "MySQL"],
+  },
+  {
+    label: "Cloud & DevOps",
     items: [
-      "React.js",
-      "Node.js",
-      "Express.js",
+      "GCP",
+      "Cloud Run",
+      "Artifact Registry",
+      "IAM",
+      "Docker",
+      "Vercel",
+      "Cloudflare",
+      "Railway",
+    ],
+  },
+  {
+    label: "Testing & QA",
+    items: [
       "Jest",
       "Playwright",
-      "Drupal CMS",
-      "Tailwind CSS",
+      "Postman",
+      "Load Testing",
+      "k6",
+      "QMetry",
+      "Charles Proxy",
+      "HTTPie",
     ],
   },
   {
     label: "Developer tools",
-    items: [
-      "Git",
-      "GitHub",
-      "GitHub Actions",
-      "Docker",
-      "NPM",
-      "Postman",
-      "HTTPie",
-      "Jira",
-      "QMetry",
-      "Railway",
-      "Vercel", 
-      "CloudFlare"
-    ],
-  },
-  {
-    label: "Backend & APIs",
-    items: [
-      "REST APIs",
-      "GraphQL",
-      "OpenAI API",
-      "Express Routing",
-      "JWT",
-      "CRUD Operations",
-    ],
-  },
-  {
-    label: "Databases & cloud",
-    items: [
-      "MongoDB",
-      "MySQL",
-      "GCP", 
-      "Cloud Run", 
-      "Artifact Registry",
-      "IAM",
-    ],
+    items: ["Git", "GitHub", "GitHub Actions", "Jira", "NPM"],
   },
 ];
 
@@ -131,8 +122,8 @@ export const experience = [
     points: [
       "Built a backend Node service with 11 Express endpoints for AI question generation, answer grading, and job matching, helping users prepare for interviews.",
       "Streamlined backend error handling by consolidating validation, upstream, and parsing failures into a single shared error handler, improving consistency across Express endpoints.",
-      "Launched paid checkout with Stripe, enabling secure transaction processing through authenticated sessions and webhook fulfillment.",
-      "Containerized Node.js and Python FastAPI services using Docker Compose, cutting dev setup to one command.",
+      "Launched paid checkout with Stripe, enabling secure transaction processing through authenticated sessions and webhook fulfillment, allowing users to complete payments seamlessly.",
+      "Improved API reliability across 5 REST endpoints, measured by p95 latency and failure rates, by load testing with k6 and Postman.",
     ],
   },
   {
@@ -143,10 +134,10 @@ export const experience = [
     end: "Aug 2026",
     current: false,
     points: [
-      "Drove every pre- and post-release smoke and regression cycle using QMetry on Android and Roku, certifying 3 apps across 4 release trains at 100% pass and catching 8+ defects.",
+      "Led pre- and post-release smoke and regression testing for Android and Roku platforms using QMetry, certifying 3 apps across 4 release trains and identifying 8+ defects before production.",
       "Audited 6+ CMS-driven pages against backend configuration using staging checks, preventing misconfigured content from reaching production.",
       "Debugged streaming playback failures using Charles Proxy and HTTP log analysis, preventing playback issues across 3 NBC releases.",
-      "Consolidated 35+ legacy test cases into 17 authored QMetry test plans, cutting regression maintenance 50%.",
+      "Consolidated 35+ legacy test cases into 17 QMetry test plans, cutting regression maintenance by 50%.",
     ],
   },
 ];
@@ -166,12 +157,11 @@ export const projects = [
       "Docker",
       "GCP Cloud Run",
       "OpenAI API",
-      "RentCast API",
     ],
     points: [
-      "Built a property lookup API using a typed TypeScript service layer over RentCast, returning 15+ structured data points.",
+      "Built a property lookup API using a TypeScript service layer over RentCast, returning 15+ structured data points.",
       "Automated CI/CD using Cloud Build and commit-tagged Docker images, deploying to GCP Cloud Run on every push.",
-      "Reduced invalid-input failures reaching the paid RentCast and OpenAI APIs by adding request-parameter validation and layered error handling across the analysis controller and external API service.",
+      "Reduced invalid-input failures reaching paid RentCast and OpenAI APIs by adding request-parameter validation and layered error handling across the analysis controller and external API service.",
     ],
     href: "https://github.com/TheDonRay/PropertyAnalyzer",
   },
@@ -179,15 +169,25 @@ export const projects = [
     name: "CheckPoint",
     blurb:
       "A request validation layer for Express — parse, sanitize, load, and authorize before anything touches the database.",
-    stack: ["Node.js", "Express.js", "NPM", "Docker", "Postman", "MongoDB"],
+    stack: [
+      "Node.js",
+      "Express.js",
+      "NPM",
+      "Docker",
+      "Postman (Load Testing)",
+      "GCP Cloud Run",
+    ],
     points: [
       "Built a Node.js data validation layer with custom middleware for parsing, sanitization, data loading, and authorization, ensuring requests are validated before database access.",
-      "Generated MongoDB seed data to test custom middleware across endpoint requests and query types, confirming API validation behaved as expected through Postman.",
-      "Implemented GitHub Actions CI with Node 22 and npm caching, improving build consistency and efficiency.",
+      "Generated MongoDB seed data to test custom middleware across endpoint requests and query types, ensuring API validation behaved as expected through Postman.",
+      "Verified API stability under real-world traffic, processing 300+ requests without a single failure, by load testing with 100 concurrent users in Postman.",
     ],
     href: "https://github.com/TheDonRay/CheckPoint",
   },
 ];
+
+// GitHub repos tagged `portfolio` that should not appear on the site.
+export const hiddenProjects = ["AggregationPipeline", "MedSy"];
 
 export const sections = [
   { id: "top", label: "Top" },
